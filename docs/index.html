@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>blog</title>
+<title>blog - 日积月累</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,9 +70,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -135,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
-      <h1 class="title">blog</h1>
+      <h1 class="title">日积月累</h1>
                       </div>
   </div>
     
@@ -153,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="analysis">analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="code">code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(2)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Probability theory">Probability theory <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -166,110 +166,37 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="news,code,analysis" data-listing-date-sort="1674057600000" data-listing-file-modified-sort="1674114125169" data-listing-reading-time-sort="0.045">
+<div class="quarto-post image-right" data-index="0" data-categories="Probability theory" data-listing-date-sort="1679760000000" data-listing-file-modified-sort="1679816084551" data-listing-reading-time-sort="0.91">
 <div class="thumbnail">
-<p><a href="./posts/post-with-code/index.html"> <img src="./posts/post-with-code/image.jpg" class="thumnail-image"> </a></p>
+<p><a href="./posts/beta_distribution/index.html"> <img src="./posts/beta_distribution/p1.svg" class="thumnail-image"> </a></p>
 </div>
 <div class="body">
-<a href="./posts/post-with-code/index.html">
+<a href="./posts/beta_distribution/index.html">
 <h3 class="no-anchor listing-title">
-Post With Code
+Beta distribution
 </h3>
 <div class="listing-subtitle">
-
+直观解释
 </div>
 </a>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
+<div class="listing-category" onclick="window.quartoListingCategory('Probability theory'); return false;">
+Probability theory
 </div>
 </div>
-<a href="./posts/post-with-code/index.html">
+<a href="./posts/beta_distribution/index.html">
 <div class="listing-description">
-This is a post with executable code.
+<p>Beta分布用于描述二项分布 <span class="math inline">\(\text{Binomial}(x; n,p)\)</span> 中参数 <span class="math inline">\(p\)</span> 的 <strong>不确定性</strong>，即 <span class="math inline">\(p\)</span> 在不同取值下的可能性。</p>
 </div>
 </a>
 </div>
 <div class="metadata">
-<a href="./posts/post-with-code/index.html">
+<a href="./posts/beta_distribution/index.html">
 <div class="listing-date">
-Jan 19, 2023
-</div>
-<div class="listing-author">
-Harlow Malloc
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1674057600000" data-listing-file-modified-sort="1674119026473" data-listing-reading-time-sort="0.015">
-<div class="thumbnail">
-<a href="./posts/trial/trial.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/trial/trial.html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/trial/trial.html">
-<h3 class="no-anchor listing-title">
-My trial
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-下面展示生成并打印 numpy 数组
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/trial/trial.html">
-<div class="listing-date">
-Jan 19, 2023
+Mar 26, 2023
 </div>
 <div class="listing-author">
 Shen Lei
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="news" data-listing-date-sort="1673798400000" data-listing-file-modified-sort="1674114125169" data-listing-reading-time-sort="0.16">
-<div class="thumbnail">
-<p><a href="./posts/welcome/index.html"> <img src="./posts/welcome/thumbnail.jpg" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/welcome/index.html">
-<h3 class="no-anchor listing-title">
-Welcome To My Blog
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-</div>
-<a href="./posts/welcome/index.html">
-<div class="listing-description">
-This is the first post in a Quarto blog. Welcome!
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/welcome/index.html">
-<div class="listing-date">
-Jan 16, 2023
-</div>
-<div class="listing-author">
-Tristan O’Malley
 </div>
 </a>
 </div>

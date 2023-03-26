@@ -7,31 +7,59 @@
     "text": "About this blog"
   },
   {
+    "objectID": "drafts/trial/index.html",
+    "href": "drafts/trial/index.html",
+    "title": "什么是边际替代率?",
+    "section": "",
+    "text": "遍及替代率 (Marginal rate of substitution) 这个 fancy 的名词来自于经济学。用于描述在给定“总使用价值”，即给定效用（Utility）的前提下，人们在两种物品之间如何选择。"
+  },
+  {
+    "objectID": "drafts/trial/index.html#偏好preferences",
+    "href": "drafts/trial/index.html#偏好preferences",
+    "title": "什么是边际替代率?",
+    "section": "偏好（Preferences）",
+    "text": "偏好（Preferences）\n比如空姐询问，要喝茶水还是咖啡？人们会依据自身喜好给出回复。这就是偏好。经济学对于偏好有三个基本假设：\n\n完备性：人们对任意两种消费品 \\(A,B\\) ，总能确定是更喜欢A，还是更喜欢B，抑或同样喜欢，但不会出现无法确定的情况。\n传递性：如果偏好 \\(A \\le B\\) 且 \\(B \\le C\\)，则 \\(A \\le C\\) 。\n多多益善：拥有的消费品数量越多越好。相比于 1杯茶水+1杯咖啡，会更想拥有 2杯茶水+1杯咖啡。\n\n前两条假设就是数学中的全序关系（Total order) 。经济学模型中的很多重要结论，只用这两条假设就够了。第三条假设并非必要，但加入它会让推理得到大幅简化。这个假设等价于 “零成本处理掉多余消费品”，也算比较合理。"
+  },
+  {
+    "objectID": "drafts/trial/index.html#效用函数-utility-function",
+    "href": "drafts/trial/index.html#效用函数-utility-function",
+    "title": "什么是边际替代率?",
+    "section": "效用函数 (Utility function)",
+    "text": "效用函数 (Utility function)\n上面所说的消费品并不限于具体的商品，可以是任何可以比较喜好的事物。为了精确简洁的描述人们对事物的偏好，可以将其数学化为 效用函数。这个函数可以把 不同种类不同数量的消费品 对应到 实数 上。于是人们对各组消费品的喜好顺序就可以用实数大小来排序。比如 \\(U(A)=1,U(B)=2,U(C)=10\\) 就表达了偏好：\\(A<B<C\\) 。\n\n\n\n\n\n\nWarning\n\n\n\n效用函数是 ordinal 而非 cardinal，所以返回值的大小只有相对意义，没有绝对意义。\\(U(C)=10U(A)\\) 只代表偏好 \\(C>A\\)，并不意味着 \\(C\\) 比 \\(A\\) 好10倍。再以马拉松比赛为例，ordinal function返回的数值仅能用于排序，表达出前三名是谁，cardinal function返回的数值为跑步时长，不仅可以排序，还能表达如“第一名比第二名领先五分钟到达终点”这样的信息。"
+  },
+  {
+    "objectID": "drafts/trial/index.html#边际效用-marginal-utility",
+    "href": "drafts/trial/index.html#边际效用-marginal-utility",
+    "title": "什么是边际替代率?",
+    "section": "边际效用 (Marginal utility)",
+    "text": "边际效用 (Marginal utility)\n边际效用描述了每增加一个单位的消费品所对应的效用增量。"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "blog",
+    "title": "日积月累",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nJan 19, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMy trial\n\n\n\n\n\n\n\n\n\n\n\n\nJan 19, 2023\n\n\nShen Lei\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nJan 16, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Beta distribution\n\n\n直观解释\n\n\n\n\nProbability theory\n\n\n\n\nBeta分布用于描述二项分布 \\(\\text{Binomial}(x; n,p)\\) 中参数 \\(p\\) 的 不确定性，即 \\(p\\) 在不同取值下的可能性。\n\n\n\n\n\n\nMar 26, 2023\n\n\nShen Lei\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
+    "objectID": "posts/beta_distribution/index.html",
+    "href": "posts/beta_distribution/index.html",
+    "title": "Beta distribution",
     "section": "",
-    "text": "This is a post with executable code.\n\n1 + 1\n\n2"
+    "text": "PDF:\n \\text{Beta}(x;\\alpha, \\beta)=\\frac{x^{\\alpha-1}(1-x)^{\\beta-1}} {B(\\alpha,\\beta)} \n其中\n B(\\alpha,\\beta)=\\int_0^1 u^{\\alpha-1}(1-u)^{\\beta-1} du=\\frac {\\Gamma (\\alpha )\\Gamma (\\beta )}{\\Gamma (\\alpha +\\beta )}  叫做 Beta函数, 用于使整个分布的概率归一化。\nParameters:\n \\alpha >0, \\beta>0 \nSupport:\n x \\in [0, 1]"
   },
   {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "objectID": "posts/beta_distribution/index.html#要点",
+    "href": "posts/beta_distribution/index.html#要点",
+    "title": "Beta distribution",
+    "section": "要点",
+    "text": "要点\n\n这是一个连续分布。两个正参数 α,β 决定了分布的形态。\nBeta分布用于描述二项分布 \\text{Binomial}(x; n,p) 中参数 p 的 不确定性，即 p 在不同取值下的可能性。"
   },
   {
-    "objectID": "posts/trial/trial.html",
-    "href": "posts/trial/trial.html",
-    "title": "My trial",
-    "section": "",
-    "text": "数组\n下面展示生成并打印 numpy 数组\n\n\n[1 2 3 4 5 6 7 8 9]"
+    "objectID": "posts/beta_distribution/index.html#解释",
+    "href": "posts/beta_distribution/index.html#解释",
+    "title": "Beta distribution",
+    "section": "解释",
+    "text": "解释\n以扔硬币为例。若想要了解一个硬币是不是公平的，可以用正面朝上的概率 p 来衡量这枚硬币的均匀程度。以上帝的视角，p 是一个确定的常数。而以我们的视角，则只能通过实际观测来推断它。利用贝叶斯推断，p 是一个随机变量，取值范围为 [0,1] 。 p 配有一个先验分布，用于表示对其各种可能取值的事先猜测。先验分布可以任意选取，在此我们刻意的选用Beta分布。\n两个正参数 α 和 β 决定了Beta分布的形状。不同的参数搭配，可以产生相当丰富的分布形态，即选用Beta分布可以表达出很多种先验假设（虽然不是全部）。\n\n如果 α > 1, β > 1，Beta分布的形状将呈现一个钟形，表示我们先验的认为不均匀的程度更可能在峰值位置附近。\n\n\n\n\nα > 1, β > 1\n\n\n\n如果 α < 1, β < 1，Beta分布的形状在 0 和 1 附近呈现两个尖峰，表示我们先验的认为硬币非常偏心，倾向于 经常扔出正面 或 经常扔出反面。\n\n\n\n\nα < 1, β < 1\n\n\n\n如果 α = β，Beta分布关于 0.5 对称。当 α=β = 1 时为均匀分布。\n\n\n\n\nα = β\n\n\n通过实际扔几次硬币，获得正反面出现的次数 D 后，就可以计算后验分布 \\Pr(p|D)，从而得到对 p 更有信心的估计：\n\\Pr(p|D)=\\frac {\\Pr(D|p)\\Pr(p)}{\\int_0^1 \\Pr(D|p)\\Pr(p)dp} \\tag{1}\n其中\n\nD 表示实际扔 n 次硬币后，观察到有 a 次正面朝上，b 次反面朝上，a+b=n。\n\\Pr(p) 是先验分布：\\Pr(p)=\\text{Beta}(p;\\alpha,\\beta) 。\n\\Pr(D|p) 是 Binomial likelihood 1，表示如果硬币的不均匀性为 p，则产生出当前实验数据的可能性为 \\Pr(D|p)=C_{a+b}^a p^a (1-p)^b\n分母部分对 p 的所有可能取值积分，称作 全概率 或 配分函数（Partition function）。由于计算太复杂，一般情况下无法得到 closed form 2。但对于当前问题，代入 (1) 并化简：\n\n\n\\begin{align*}\n\\Pr(p|D)&=\\frac {C_{a+b}^a p^a (1-p)^b \\frac{p^{\\alpha-1}(1-p)^{\\beta-1}} {B(\\alpha,\\beta)}} {\\int_0^1 C_{a+b}^a p^a (1-p)^b \\frac{p^{\\alpha-1}(1-p)^{\\beta-1}} {B(\\alpha,\\beta)}dp} \\\\\n&=\\frac{p^{\\alpha-1+a}(1-p)^{\\beta-1+b}} {\\int_0^1 p^{\\alpha-1+a}(1-p)^{\\beta-1+b} dp} \\\\\n&=\\frac{p^{\\alpha-1+a}(1-p)^{\\beta-1+b}} {B(\\alpha-1+a, \\beta-1+b)} \\\\\n&=\\text{Beta}(p; \\alpha-1+a, \\beta-1+b)\n\\end{align*}\n\n神奇的事情发生了，后验分布仍然是 Beta分布，只是参数分别加上了实验结果。当先验分布与后验分布具有相同数学形式时，称为 共轭分布（Conjugate Distribution） ，称先验分布为似然函数 \\Pr(D|p) 的 共轭先验（Conjugate Prior）。这就是当初选择Beta分布作为先验的一个重要原因。如此选择就可以解析的计算出全概率，而且得到的后验分布形式不变，可以作为进一步实验的先验分布，从而大大简化计算。"
   }
 ]
