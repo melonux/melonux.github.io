@@ -39,7 +39,7 @@
     "href": "index.html",
     "title": "日积月累",
     "section": "",
-    "text": "Beta distribution\n\n\n直观解释\n\n\n\n\nProbability theory\n\n\n\n\nBeta分布用于描述二项分布 \\(\\text{Binomial}(x; n,p)\\) 中参数 \\(p\\) 的 不确定性，即 \\(p\\) 在不同取值下的可能性。\n\n\n\n\n\n\nMar 26, 2023\n\n\nShen Lei\n\n\n\n\n\n\nNo matching items"
+    "text": "Beta distribution\n\n\n直观解释\n\n\n\n\nProbability theory\n\n\n\n\nBeta分布用于描述二项分布 \\(\\text{Binomial}(x; n,p)\\) 中参数 \\(p\\) 的 不确定性，即 \\(p\\) 在不同取值下的可能性。\n\n\n\n\n\n\nMar 26, 2023\n\n\nShen Lei\n\n\n\n\n\n\n  \n\n\n\n\nDirichlet distribution\n\n\n直观解释\n\n\n\n\nProbability theory\n\n\n\n\nDirichlet分布用于描述 \\(\\text{Multinomial}(\\vec x; n,\\vec p)\\) 中参数 \\(\\vec p\\) 的 不确定性，即 \\(\\vec p\\) 在不同取值下的可能性。\n\n\n\n\n\n\nMar 26, 2023\n\n\nShen Lei\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/beta_distribution/index.html",
@@ -53,13 +53,34 @@
     "href": "posts/beta_distribution/index.html#要点",
     "title": "Beta distribution",
     "section": "要点",
-    "text": "要点\n\n这是一个连续分布。两个正参数 α,β 决定了分布的形态。\nBeta分布用于描述二项分布 \\text{Binomial}(x; n,p) 中参数 p 的 不确定性，即 p 在不同取值下的可能性。"
+    "text": "要点\n\n这是一个连续分布。两个正参数 α,β 决定了分布的形态。\nBeta分布用于描述二项分布 \\text{Binomial}(x; n,p) 中参数 p 的 不确定性，即 p 在不同取值下的可能性。\nBeta分布是二项分布的共轭先验。"
   },
   {
     "objectID": "posts/beta_distribution/index.html#解释",
     "href": "posts/beta_distribution/index.html#解释",
     "title": "Beta distribution",
     "section": "解释",
-    "text": "解释\n以扔硬币为例。若想要了解一个硬币是不是公平的，可以用正面朝上的概率 p 来衡量这枚硬币的均匀程度。以上帝的视角，p 是一个确定的常数。而以我们的视角，则只能通过实际观测来推断它。利用贝叶斯推断，p 是一个随机变量，取值范围为 [0,1] 。 p 配有一个先验分布，用于表示对其各种可能取值的事先猜测。先验分布可以任意选取，在此我们刻意的选用Beta分布。\n两个正参数 α 和 β 决定了Beta分布的形状。不同的参数搭配，可以产生相当丰富的分布形态，即选用Beta分布可以表达出很多种先验假设（虽然不是全部）。\n\n如果 α > 1, β > 1，Beta分布的形状将呈现一个钟形，表示我们先验的认为不均匀的程度更可能在峰值位置附近。\n\n\n\n\nα > 1, β > 1\n\n\n\n如果 α < 1, β < 1，Beta分布的形状在 0 和 1 附近呈现两个尖峰，表示我们先验的认为硬币非常偏心，倾向于 经常扔出正面 或 经常扔出反面。\n\n\n\n\nα < 1, β < 1\n\n\n\n如果 α = β，Beta分布关于 0.5 对称。当 α=β = 1 时为均匀分布。\n\n\n\n\nα = β\n\n\n通过实际扔几次硬币，获得正反面出现的次数 D 后，就可以计算后验分布 \\Pr(p|D)，从而得到对 p 更有信心的估计：\n\\Pr(p|D)=\\frac {\\Pr(D|p)\\Pr(p)}{\\int_0^1 \\Pr(D|p)\\Pr(p)dp} \\tag{1}\n其中\n\nD 表示实际扔 n 次硬币后，观察到有 a 次正面朝上，b 次反面朝上，a+b=n。\n\\Pr(p) 是先验分布：\\Pr(p)=\\text{Beta}(p;\\alpha,\\beta) 。\n\\Pr(D|p) 是 Binomial likelihood 1，表示如果硬币的不均匀性为 p，则产生出当前实验数据的可能性为 \\Pr(D|p)=C_{a+b}^a p^a (1-p)^b\n分母部分对 p 的所有可能取值积分，称作 全概率 或 配分函数（Partition function）。由于计算太复杂，一般情况下无法得到 closed form 2。但对于当前问题，代入 (1) 并化简：\n\n\n\\begin{align*}\n\\Pr(p|D)&=\\frac {C_{a+b}^a p^a (1-p)^b \\frac{p^{\\alpha-1}(1-p)^{\\beta-1}} {B(\\alpha,\\beta)}} {\\int_0^1 C_{a+b}^a p^a (1-p)^b \\frac{p^{\\alpha-1}(1-p)^{\\beta-1}} {B(\\alpha,\\beta)}dp} \\\\\n&=\\frac{p^{\\alpha-1+a}(1-p)^{\\beta-1+b}} {\\int_0^1 p^{\\alpha-1+a}(1-p)^{\\beta-1+b} dp} \\\\\n&=\\frac{p^{\\alpha-1+a}(1-p)^{\\beta-1+b}} {B(\\alpha-1+a, \\beta-1+b)} \\\\\n&=\\text{Beta}(p; \\alpha-1+a, \\beta-1+b)\n\\end{align*}\n\n神奇的事情发生了，后验分布仍然是 Beta分布，只是参数分别加上了实验结果。当先验分布与后验分布具有相同数学形式时，称为 共轭分布（Conjugate Distribution） ，称先验分布为似然函数 \\Pr(D|p) 的 共轭先验（Conjugate Prior）。这就是当初选择Beta分布作为先验的一个重要原因。如此选择就可以解析的计算出全概率，而且得到的后验分布形式不变，可以作为进一步实验的先验分布，从而大大简化计算。"
+    "text": "解释\n以扔硬币为例。若想要了解一个硬币是不是公平的，可以用正面朝上的概率 p 来衡量这枚硬币的均匀程度。以上帝的视角，p 是一个确定的常数。而以我们的视角，则只能通过实际观测来推断它。利用贝叶斯推断，p 是一个随机变量，取值范围为 [0,1] 。 p 配有一个先验分布，用于表示对其各种可能取值的事先猜测。先验分布可以任意选取，在此我们刻意的选用Beta分布。\n两个正参数 α 和 β 决定了Beta分布的形状。不同的参数搭配，可以产生相当丰富的分布形态，即选用Beta分布可以表达出很多种先验假设（虽然不是全部）。\n\n如果 α > 1, β > 1，Beta分布的形状将呈现一个钟形，表示我们先验的认为不均匀的程度更可能在峰值位置附近。\n\n\n\n\nα > 1, β > 1\n\n\n\n如果 α < 1, β < 1，Beta分布的形状在 0 和 1 附近呈现两个尖峰，表示我们先验的认为硬币非常偏心，倾向于 经常扔出正面 或 经常扔出反面。\n\n\n\n\nα < 1, β < 1\n\n\n\n如果 α = β，Beta分布关于 0.5 对称。当 α=β = 1 时为均匀分布。\n\n\n\n\nα = β\n\n\n通过实际扔几次硬币，获得正反面出现的次数 D 后，就可以计算后验分布 \\Pr(p|D)，从而得到对 p 更有信心的估计：\n\\Pr(p|D)=\\frac {\\Pr(D|p)\\Pr(p)}{\\int_0^1 \\Pr(D|p)\\Pr(p)dp} \\tag{1}\n其中\n\nD 表示实际扔 n 次硬币后，观察到有 a 次正面朝上，b 次反面朝上，a+b=n。\n\\Pr(p) 是先验分布：\\Pr(p)=\\text{Beta}(p;\\alpha,\\beta) 。\n\\Pr(D|p) 是 Binomial likelihood 1，表示如果硬币的不均匀性为 p，则产生出当前实验数据的可能性为 \\Pr(D|p)=C_{a+b}^a p^a (1-p)^b\n分母部分对 p 的所有可能取值积分，称作 全概率 或 配分函数（Partition function）。由于计算太复杂，一般情况下无法得到 closed form 2。但对于当前问题，代入 (1) 并化简：\n\n\n\\begin{align*}\n\\Pr(p|D)&=\\frac {C_{a+b}^a p^a (1-p)^b \\frac{p^{\\alpha-1}(1-p)^{\\beta-1}} {B(\\alpha,\\beta)}} {\\int_0^1 C_{a+b}^a p^a (1-p)^b \\frac{p^{\\alpha-1}(1-p)^{\\beta-1}} {B(\\alpha,\\beta)}dp} \\\\\n&=\\frac{p^{\\alpha-1+a}(1-p)^{\\beta-1+b}} {\\int_0^1 p^{\\alpha-1+a}(1-p)^{\\beta-1+b} dp} \\\\\n&=\\frac{p^{\\alpha-1+a}(1-p)^{\\beta-1+b}} {B(\\alpha+a, \\beta+b)} \\\\\n&=\\text{Beta}(p; \\alpha+a, \\beta+b)\n\\end{align*}\n\n神奇的事情发生了，后验分布仍然是 Beta分布，只是参数分别加上了实验结果。当先验分布与后验分布具有相同数学形式时，称为 共轭分布（Conjugate Distribution） ，称先验分布为似然函数 \\Pr(D|p) 的 共轭先验（Conjugate Prior）。这就是当初选择Beta分布作为先验的一个重要原因。如此选择就可以解析的计算出全概率，而且得到的后验分布形式不变，可以作为进一步实验的先验分布，从而大大简化计算。"
+  },
+  {
+    "objectID": "posts/dirichlet_distribution/index.html",
+    "href": "posts/dirichlet_distribution/index.html",
+    "title": "Dirichlet distribution",
+    "section": "",
+    "text": "PDF:\n \\text{Dir}(\\vec x;\\vec α)=\\frac 1 {B(\\vec α)} \\prod_{i=1}^K x_i^{α_i-1}\n其中 K 是向量 \\vec x, \\vec α 的维度，\nB(\\vec \\alpha)=\\frac {\\prod_{i=1}^K \\Gamma(α_i)} {\\Gamma(\\sum_{i=1}^K α_i)}\n叫做 多元Beta函数，用于使整个分布的概率归一化。\nParameters:\n \\vec α=(α_1, ..., α_K)^T \\\\\n\\text{where } K \\ge 2 \\text{ and } α_1, ..., α_K > 0\nSupport:\n \\vec x=(x_1, ..., x_K)^T \\\\\n\\text{where } x_1, ..., x_K \\in [0,1] \\text{ and } \\sum_{i=1}^K x_i=1"
+  },
+  {
+    "objectID": "posts/dirichlet_distribution/index.html#要点",
+    "href": "posts/dirichlet_distribution/index.html#要点",
+    "title": "Dirichlet distribution",
+    "section": "要点",
+    "text": "要点\n\n它是Beta分布的多元推广。当 K=2 时，退化为 Beta分布。\n它是一个连续分布，正参数向量 \\vec α 决定了分布的形态。\nDirichlet分布用于描述 \\text{Multinomial}(\\vec x; n,\\vec p) 中参数 \\vec p 的 不确定性，即 \\vec p 在不同取值下的可能性。\nDirichlet分布是Multinomial分布的共轭先验。"
+  },
+  {
+    "objectID": "posts/dirichlet_distribution/index.html#解释",
+    "href": "posts/dirichlet_distribution/index.html#解释",
+    "title": "Dirichlet distribution",
+    "section": "解释",
+    "text": "解释\n先看Dirichlet分布在 K=2 时的情形：\n\\begin{align*}\n\\text{Dir}(x_1,x_2;α_1,α_2)&=\\frac 1 {B(α_1,α_2)} x_1^{α_1-1} x_2^{α_2-1} \\\\\n&=\\frac 1 {B(α_1,α_2)} x_1^{α_1-1} (1 - x_1)^{α_2-1} \\\\\n&=\\text{Beta}(x_1; α_1,α_2)\n\\end{align*}\n此时Dirichlet分布退化为Beta分布。如果有疑惑，建议先阅读 Beta distribution。\n这次对应的场景不再是扔硬币了，而是扔一个 K 面骰子（K=2 时对应两面骰子，即硬币）。我们想要了解抛这枚骰子后，各面出现的概率 \\vec p=(p_1,p_2,...,p_k)^T 来衡量这枚骰子的均匀程度。于是自然会要求 \\vec p 的每个分量的取值范围都是 [0,1]，且各分量之和等于 1：\\|\\vec p\\|_{1}=1 。在这种条件下，\\vec p 本身就代表了一种分布，描述了骰子各面出现的概率。从几何角度看，\\vec p 的所有可能取值构成了一个 K-1 维的 Simplex，嵌入在 K 维的单位正方体中。当 K=3 时，Simplex为嵌入在单位立方体中的正三角形，顶点为 (1,0,0),(0,1,0),(0,0,1)。\n\n\n\n红色三角形区域中的点代表了 \\vec p 的可能取值\n\n\n对于给定的 K 面骰子，以上帝的视角，\\vec p 是一个确定的常向量。而以我们的视角，就只能通过实际观测来推断它。利用贝叶斯推断，p 是一个 随机向量。在做实验之前，可以为其设定一个先验分布，用于表示对这枚骰子均匀程度的事先猜测。先验分布可以任意选取，在此我们刻意的选用Dirichlet分布: \\text{Dir}(\\vec p;\\vec α)。\n参数向量 \\vec α 决定了Dirichlet分布的形状。不同的参数搭配，可以产生相当丰富的分布形态，即选用Dirichlet分布可以表达出很多种先验假设（虽然不是全部）。\n\n如果 0 < α_i < 1，Dirichlet分布的概率密度集中在 Simplex 的顶点和边界，中心部分的概率密度很低，表示我们先验的认为骰子非常偏心，倾向于经常扔出某一面或某两面，其他面则很少出现；而且 α_i 越大，概率密度就越向对应分量集中。\n\n\n\n\n\n\n\n\\vec α=(0.2,0.2,0.2)\n\n\n\n\n\n\n\n\\vec α=(0.8,0.2,0.2)\n\n\n\n\n\n\n\n\\vec α=(0.8,0.8,0.2)\n\n\n\n\n\n\n如果 α_i > 1，Dirichlet分布的概率密度集中在 Simplex 的中心附近，呈现钟形，表示我们先验的认为骰子相对均匀；而且 α_i 越大，概率密度就越向对应分量集中。\n\n\n\n\n\n\n\n\\vec α=(2,2,2)\n\n\n\n\n\n\n\n\\vec α=(8,2,2)\n\n\n\n\n\n\n\n\\vec α=(8,8,2)\n\n\n\n\n\n\n如果 \\vec α 的各个分量都相同时，Dirichlet分布关于 Simplex 中心对称。当 α_i = 1 时为均匀分布；而且 α_i 越大，概率密度就越向Simplex的中心集中。\n\n\n\n\n\n\n\n\\vec α=(1,1,1)\n\n\n\n\n\n\n\n\\vec α=(2,2,2)\n\n\n\n\n\n\n\n\\vec α=(8,8,8)\n\n\n\n\n\n通过实际扔几次骰子，统计各面出现的次数 D 后，就可以计算后验分布 \\Pr(\\vec p|D)，从而得到对 \\vec p 更有信心的估计：\n\\Pr(\\vec p|D)=\\frac {\\Pr(D|\\vec p)\\Pr(\\vec p)}{\\int_\\text{Simplex} \\Pr(D|\\vec p)\\Pr(\\vec p)d\\vec p} \\tag{1}\n其中\n\nD 表示实际扔 n 次骰子后，观察到各面朝上的次数分别为 \\vec a=(a_1, a_2,...a_K)，满足 \\sum_{i=1}^K a_i=n。\n\\Pr(\\vec p) 是先验分布：\\Pr(p)=\\text{Dir}(\\vec p;\\vec α) 。\n\\Pr(D|p) 是 Multinomial likelihood 1，是二项分布的扩展，表示已知骰子各面出现的几率为 \\vec p 时，产生出当前实验数据的概率。这个概率服从 Multinomial distribution: \\Pr(D|p)=\\frac {n!} {a_1!...a_K!} p_1^{a_1} p_2^{a_2}...p_K^{a_K}\n分母部分对 p 的所有可能取值积分，称作 全概率 或 配分函数（Partition function）。由于计算太复杂，一般情况下无法得到 closed form。但对于当前问题，为了方便表述，不妨设 K=3，代入 (1) 并化简：\n\n\n\\begin{align*}\n\\Pr(\\vec p|D)&=\\frac {\\frac {n!} {a_1!a_2!a_3!} p_1^{a_1} p_2^{a_2} p_3^{a_3} \\frac 1 {B(α_1, α_2, α_3)} p_1^{α_1-1} p_2^{α_2-1} p_3^{α_3-1}} {\\int_\\text{Simplex} \\frac {n!} {a_1!a_2!a_3!} p_1^{a_1} p_2^{a_2} p_3^{a_3} \\frac 1 {B(α_1,α_2,α_3)} p_1^{α_1-1} p_2^{α_2-1} p_3^{α_3-1} d \\vec p} \\\\\n&= \\frac {p_1^{a_1+α_1-1} p_2^{a_2+α_2-1} p_3^{a_3+α_3-1}} {\\int_{p_1=0}^1\\int_{p_2=0}^{1-p_1} {p_1^{a_1+α_1-1} p_2^{a_2+α_2-1} (1-p_1-p_2)^{a_3+α_3-1}} dp_1 dp_2}\\\\\n&=\\frac 1 {B(a_1+α_1,...,a_3+α_3)} p_1^{a_1+α_1-1} p_2^{a_2+α_2-1} p_3^{a_3+α_3-1} \\\\\n&=\\text{Dir}(\\vec p;\\vec α+\\vec a)\n\\end{align*}\n\n可见，后验分布仍然是 Dirichlet分布，只是参数分别加上了实验结果。所以，Dirichlet分布是 Multinomial分布的共轭先验。\n推荐一个在线可视化 Dirichlet 分布的网站。"
   }
 ]
