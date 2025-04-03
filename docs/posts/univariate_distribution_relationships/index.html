@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Shen Lei">
+
+<title>[译注] 单变量概率分布之间的关系 – blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f3c2ea88cadbcfb37ba28ffa2c97cfc1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-ae2d0dcda2edce4ab590422bb373b64f.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="切换深色模式"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page">
+      <h1 class="title">[译注] 单变量概率分布之间的关系</h1>
+            <p class="subtitle lead">原文链接: <a href="2008amstat.pdf">Univariate Distribution Relationships</a></p>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Probability theory</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page">
+
+      <div>
+      <div class="quarto-title-meta-heading">作者</div>
+      <div class="quarto-title-meta-contents">
+               <p>Shen Lei </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">发布于</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">2023年6月29日</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  <div>
+    <div class="abstract">
+      <div class="block-title">摘要</div>
+      <p>各种概率分布并非孤立，而是紧密关联在一起的。本文基于原论文，总结了单变量概率分布的属性，同时对大部分的关联给出了详细的证明步骤。</p>
+    </div>
+  </div>
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+
+
+
+
+
+<section id="引言" class="level2">
+<h2 class="anchored" data-anchor-id="引言">引言</h2>
+<p>在传统的数理统计教科书中，概率分布往往被孤立的介绍，很少讨论他们之间的联系。本文对 Leemis 在1986年绘制的图表进行了更新，展示出许多常见单变量概率分布的属性和关联。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="relation.png" class="img-fluid figure-img"></p>
+<figcaption>图-1</figcaption>
+</figure>
+</div>
+<p><a href="#图-1">图-1</a> 含有 76 个单变量概率分布，其中 19 个离散分布，57 个连续分布。矩形外框表示离散分布，圆角外框表示连续分布。除 Benford 分布外，离散分布都排布在图表上部。每个分布包含两行描述。第一行给出分布的名称和参数，第二行列举其属性。</p>
+<p>对分布参数做如下约定：</p>
+<ul>
+<li><span class="math inline">n:</span> 无论有无下标，表示正整数</li>
+<li><span class="math inline">p:</span> 满足 <span class="math inline">0 &lt; p &lt; 1</span></li>
+<li><span class="math inline">\alpha, \sigma:</span> 无论有无下标，表示正的尺度参数 (scale parameter)</li>
+<li><span class="math inline">\beta, \gamma, \kappa:</span> 表示正的形状参数 (shape parameter)</li>
+<li><span class="math inline">\mu, a, b:</span> 表示位置参数 (location parameter)</li>
+<li><span class="math inline">\lambda, \delta:</span> 表示正的参数</li>
+</ul>
+<p>偶尔的例外会在附录中注明 (附录见原文)。 受限于排版，有好多分布没有被包含在图中。</p>
+</section>
+<section id="分布属性" class="level2">
+<h2 class="anchored" data-anchor-id="分布属性">分布属性</h2>
+<p>单变量概率分布有不同的属性，列在 <a href="#图-1">图-1</a> 中。</p>
+<ul>
+<li><p><strong>L</strong>inear combination (线性组合性)：表明服从此分布的多个独立随机变量的线性组合服仍从此分布。</p>
+<p>例：若 <span class="math inline">n</span> 个独立随机变量 <span class="math inline">X_i \sim N(\mu_i, \sigma_i^2)</span>，其中 <span class="math inline">i=1,2,...,n</span> 且 <span class="math inline">a_i \in \R</span>，则</p>
+<p><span class="math display">\sum_{i=1}^n a_i X_i \sim N \bigg( \sum_{i=1}^n a_i \mu_i, \sum_{i=1}^n a_i^2 \sigma_i^2 \bigg)</span></p>
+<p><a href="#证明-1">证明-1</a></p></li>
+<li><p><strong>C</strong>onvolution (卷积性)：表明服从此分布的多个独立随机变量之和仍服从此分布。</p>
+<p>例：若 <span class="math inline">n</span> 个独立随机变量 <span class="math inline">X_i \sim \chi^2(k_i)</span>，其中 <span class="math inline">i=1,2,...,n</span>，则</p>
+<p><span class="math display">\sum_{i=1}^n X_i \sim \chi^2\bigg(\sum_{i=1}^n k_i \bigg)</span></p>
+<p><a href="#证明-2">证明-2</a></p></li>
+<li><p><strong>S</strong>caling (缩放性)：表明服从此分布的独立随机变量乘以任意正实数后仍服从此分布。</p>
+<p>例：若随机变量 <span class="math inline">X \sim \text{Weibull}(\alpha, \beta)</span> 且 <span class="math inline">k&gt;0</span>，则</p>
+<p><span class="math display"> kX \sim \text{Weibull}(\alpha k ^\beta, \beta)</span></p>
+<p><a href="#证明-3">证明-3</a></p></li>
+<li><p><strong>P</strong>roduct (乘积性)：表明服从此分布的独立随机变量之积仍服从此分布。</p>
+<p>例：若 <span class="math inline">n</span> 个独立随机变量 <span class="math inline">X_i \sim \text{Lognormal}(\mu_i, \sigma_i^2)</span>，其中 <span class="math inline">i=1,2,...,n</span>，则</p>
+<p><span class="math display">\prod_{i=1}^n X_i \sim \text{Lognormal}\bigg(\sum_{i=1}^n \mu_i, \sum_{i=1}^n \sigma_i^2 \bigg)</span></p>
+<p><a href="#证明-4">证明-4</a></p></li>
+<li><p><strong>I</strong>nverse (倒数性)：表明服从此分布的随机变量的倒数仍服从此分布。</p>
+<p>例：若随机变量 <span class="math inline">X \sim F(n_1, n_2)</span> 则</p>
+<p><span class="math display">\frac 1 X \sim F(n_2, n_1)</span></p>
+<p>注：服从 <a href="https://en.wikipedia.org/wiki/F-distribution">F distribution</a></p>
+<p><a href="#证明-5">证明-5</a></p></li>
+<li><p><strong>M</strong>inimum (最小性)：表明多个服从此分布的独立随机变量的最小值仍服从此分布。</p>
+<p>例：若 <span class="math inline">n</span> 个独立随机变量 <span class="math inline">X_i \sim \text{Exp}(\alpha_i)</span>，其中 <span class="math inline">i=1,2,...,n</span>，则</p>
+<p><span class="math display">\min\{X_1, X_2,...,X_n\} \sim \text{Exp} \bigg(1 \bigg/ \sum_{i=1}^n \frac 1 {\alpha_i} \bigg)</span></p>
+<p><a href="#证明-6">证明-6</a></p></li>
+<li><p>Ma<strong>X</strong>imum (最大性)：表明多个服从此分布的独立随机变量的最大值仍服从此分布。</p>
+<p>例：若 <span class="math inline">n</span> 个独立随机变量 <span class="math inline">X_i \sim \text{standard power}(\beta_i)</span>，其中 <span class="math inline">i=1,2,...,n</span>，则</p>
+<p><span class="math display">\max\{X_1, X_2,...,X_n\} \sim \text{standard power} \bigg(\sum_{i=1}^n \beta_i \bigg)</span></p>
+<p><a href="#证明-7">证明-7</a></p></li>
+<li><p><strong>F</strong>orgetfulness (健忘性)：也叫做无记忆性，表明此分布的随机变量大于某值的条件分布与原无条件分布相同，即 <span class="math inline">X|X&gt;a</span> 与 <span class="math inline">X</span> 的分布不仅同族且分布参数也相同。</p>
+<p>例：离散分布中<u>只有</u> Geometric 分布，连续分布中<u>只有</u> Exponential 分布具有这种性质。</p>
+<p><a href="#证明-8">证明-8</a></p></li>
+<li><p><strong>R</strong>esidual (残留性)：表明此分布的随机变量大于某值的条件分布与原无条件分布同族，即 <span class="math inline">X|X&gt;a</span> 与 <span class="math inline">X</span> 服从同一类分布，但分布参数可以不同。可见健忘性是残留性的特例。</p>
+<p>例：若 <span class="math inline">X \sim \text{ Uniform }(a,b)</span>，而 <span class="math inline">k \in (a,b)</span>，则 <span class="math inline">X&gt;k|X</span> 也属于均匀分布。</p>
+<p><a href="#证明-9">证明-9</a></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+注记
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>健忘性 和 残留性 一般都是针对 <span class="math inline">X&gt;a</span> 这种形式的条件进行定义的。因为应用中常关注等待时间或生存时间超过某一阈值后的情况。如果硬要采用其他条件，那就要具体情况具体分析了。比如对于 指数分布，如果以 <span class="math inline">X&lt;a</span> 为条件，就不是指数分布了。</p>
+</div>
+</div></li>
+<li><p><strong>V</strong>ariate generation (变量生成性)：表明连续随机变量的反累计分布函数 (Inverse CDF) 可以表达为封闭形式 (closed form)。对于离散随机变量，具有这个属性意味着存在时间复杂度为 <span class="math inline">O(1)</span> 的算法来生成这个随机变量，无需循环或利用其他特性。</p>
+<p>例：若随机变量 <span class="math inline">X \sim \text{Exp}(\alpha)</span>，则其 Inverse CDF 为</p>
+<p><span class="math display">F^{-1}(u) = -\alpha \ln(1-u), \; u \in (0,1)</span></p>
+<p><a href="#证明-10">证明-10</a></p></li>
+</ul>
+<p>这些属性之间存在<strong>包含</strong>关系。属性 <strong>L</strong> 包含了属性 <strong>C</strong> 和 <strong>S</strong>，所以图中 <strong>C</strong> 和 <strong>S</strong> 不会被出现在具有 <strong>L</strong> 属性的分布中。类似的还有属性 <strong>F</strong> 包含着 <strong>R</strong>。</p>
+<p>有些属性只在特定情况下才成立。比如具有的 <strong>M</strong> 属性的 Weibull 分布，只有当形状参数固定时才成立。所以在<a href="#图-1">图-1</a>中 Weibull 分布的第二行写成 <span class="math inline">M_\beta</span>，以示限制。</p>
+</section>
+<section id="分布之间的关系" class="level2">
+<h2 class="anchored" data-anchor-id="分布之间的关系">分布之间的关系</h2>
+<p><a href="#图-1">图-1</a> 使用了三种线型来连接分布：</p>
+<ol type="1">
+<li><strong>实线</strong> 表示特殊情形 (Special cases) 和 变换 (Transformations)。变换的标注中通常出现 <span class="math inline">X</span>，以区别于特殊情形。术语 “变换” 在这里使用得很宽泛，包括 顺序统计量 (Order statistic) 的分布，截断随机变量，或采用随机变量的混合。</li>
+<li><strong>虚线</strong> 表示渐进关系。通常是对一个或多个参数向参数空间的边界取极限。</li>
+<li><strong>点线</strong> 表示贝叶斯关系。例如 Beta-binomial，Beta-Pascal，Gamma-normal，Gamma-Poisson。<a href="#证明-11">证明-11</a></li>
+</ol>
+<p>Binomial、<span class="math inline">\chi^2</span>、Exponential、Gamma、Normal 和 Uniform分布作为<strong>枢纽</strong>出现，突出了它们在应用统计中的中心地位。 求和限制在从 <span class="math inline">i=1</span> 到 <span class="math inline">n</span>。符号 <span class="math inline">X_{(r)}</span> 表示从大小为 <span class="math inline">n</span> 的随机样本中抽取的第 <span class="math inline">r</span> 个顺序统计量。</p>
+<p>不同分布在合适的分布参数下会成为同一分布。例如：<a href="#证明-12">证明-12</a></p>
+<ol type="1">
+<li>均值为 2 的 Exponential 分布 和 2个自由度的 <span class="math inline">\chi^2</span> 分布。</li>
+<li>具有偶数自由度的 <span class="math inline">\chi^2</span> 分布 与 尺度参数为 2 的 Erlang 分布。</li>
+<li>样本大小 <span class="math inline">n=1</span> 的 Kolmogorov-Smirnov 分布 与 <span class="math inline">(1/2, 1)</span> 的 Uniform 分布。</li>
+</ol>
+<p>这些关系都用双头箭头表示。</p>
+<p>利用概率积分变换，可以在 Standard uniform 分布和所有满足 <span class="math inline">F(X) \sim \text{Uniform}(0,1)</span> 的分布之间建立联系。类似的，可以在 Standard exponential 分布和所有满足 <span class="math inline">H(X) \sim \text{Exp}(1)</span> 的分布之间建立联系。其中 <span class="math inline">H(x)=\int_{-\infin}^x f(t)/(1-F(t))dt</span> 是累计风险函数 (Cumulative hazard function)。<a href="#证明-13">证明-13</a></p>
+<p>所有可以表示为随机变量之和的随机变量，在求和项数趋于无穷时，由于中心极限定理，其分布逐渐收敛到 Normal 分布。这类分布有：</p>
+<ul>
+<li>Binomial 分布：<span class="math inline">n</span> 个独立的 Bernoulli 随机变量之和。每次实验的成功概率为 <span class="math inline">p</span>。描述 <span class="math inline">n</span> 次独立 Bernoulli 实验中，成功的次数。</li>
+<li><span class="math inline">\chi^2</span> 分布：<span class="math inline">k</span> 个独立的 Standard normal 随机变量的平方和的分布，其中<span class="math inline">k</span>是自由度。</li>
+<li>Erlang 分布：<span class="math inline">k</span> 个独立同分布的 Exponential 随机变量之和，其中 <span class="math inline">k</span> 是正整数。描述等待收到 <span class="math inline">k</span> 次信号的时间间隔。</li>
+<li>Gamma 分布：<span class="math inline">k</span> 个独立同分布的 Exponential 随机变量之和，其中 <span class="math inline">k</span> 是正实数。Gamma 分布是 Erlang 分布的推广。描述完成 <span class="math inline">k</span> 的任务量(可以是部分完成)所需的时间。</li>
+<li>Hypoexponential 分布：类似于 Gamma 分布，但可以是独立的多个不同 Exponential 随机变量之和，每个 Exponential 分布都有自己的参数和权重。用于描述多阶段系统的总完成时间。</li>
+<li>Pascal 分布：<span class="math inline">n</span> 个独立的 Bernoulli 随机变量之和。描述需要累计到 <span class="math inline">k</span> 次成功所需的实验次数。</li>
+</ul>
+<p>此外，所有分布都跟 Normal 分布有渐进 (Asymptotic) 关系，只要他们具有有限均值和有限方差，中心极限定理保证了随机变量的和收敛到 Normal 分布。</p>
+<p>许多变换是<strong>可逆</strong>的，<a href="#图-1">图-1</a>中以双箭头连接两个分布。考虑 Normal 分布和 Standard normal 分布的关系。如果 <span class="math inline">X \sim N(\mu, \sigma^2)</span>，则 <span class="math inline">\frac {X-\mu}{\sigma} \sim N(0,1)</span>。反过来，如果 <span class="math inline">X \sim N(0,1)</span>，则 <span class="math inline">\mu+\sigma X \sim N(\mu, \sigma^2)</span>。前一个变换用于将随机变量标准化，以便查表求值。后一个变换用于随机变量的生成。但为了简洁， 在大多数情况下逆变换是隐含的，并<strong>不</strong>显示在图中。比如对 Weibull 随机变量取对数得到 Extreme value 随机变量；对 Extreme value 随机变量取指数得到 Weibull随机变量。<a href="#证明-14">证明-14</a></p>
+<p>有些变换可以产生尚未定名的全新分布： <a href="#证明-15">证明-15</a></p>
+<ol type="1">
+<li>Extreme value 分布和 Log gamma 分布意味着对任意 Survival distribution 取对数的变换，都将得到一个Support是整个实数轴的分布。</li>
+<li>Inverted gamma distribution 意味着对任意 Survival distribution 取倒数可以得到另一个 Survival distribution。</li>
+<li>对于Support为 <span class="math inline">(0,1)</span> 的随机变量，交换 <span class="math inline">F(x), F^{-1}(u)</span> 的角色会得到对应的 Complementary distribution。</li>
+</ol>
+<p>另外，<a href="#图-1">图-1</a>中的一些变换可以启发随机数生成器的设计。比如 Box-Muller 算法，将 <span class="math inline">\text{Uniform}(0,1)</span> 先变换到指数分布，再到 <span class="math inline">\chi^2</span>分布，再到 Standard normal 分布，最后利用缩放变换到所需的 Normal 分布。 <a href="#证明-16">证明-16</a></p>
+<p>多余的箭头一般不会出现在图中。比如 Minimax 分布和 Standard Uniform 分布之间并没有箭头连接，因为已经有 <span class="math inline">\text{Minimax} \rightarrow \text{Standard power} \rightarrow \text{Uniform}(0,1)</span>。类似的，虽然 Exponential 分布是 Gamma 分布的特殊情形，但二者没有箭头连接，因为已有 <span class="math inline">\text{Gamma} \rightarrow \text{Erlang} \rightarrow \text{Exponential}</span>。</p>
+<p>为了保持图表清晰，有些不适合或相距太远的分布并没出现在其中。比如：</p>
+<ul>
+<li>Exponential 随机变量的向下取整，得到 Geometric 随机变量。 <a href="#证明-17">证明-17</a></li>
+<li>连续 Uniform 随机变量向下取整，得到离散 Uniform 随机变量。</li>
+<li>Exponential 随机变量是 Makeham 随机变量在 <span class="math inline">\delta=0</span> 的特殊情况。</li>
+<li>Standard power 随机变量是 Beta 随机变量在 <span class="math inline">\delta=1</span> 的特殊情况。</li>
+<li>如果 <span class="math inline">X \sim F(n_1, n_2)</span>, 则 <span class="math inline">\frac 1 {1+(n_1/n_2)X}</span> 服从 Beta 分布。 <a href="#证明-18">证明-18</a></li>
+<li>以 <span class="math inline">n_1, n_2</span> 为自由度, 以 <span class="math inline">\delta,\gamma</span> 为非中心参数的双重非中心 F 分布定义为 <span class="math inline">\big( \frac {X_1(\delta)}{n_1} \big)\big( \frac {X_2(\gamma)}{n_2} \big)^{-1}</span>， 其中 <span class="math inline">X_1(\delta),X_2(\gamma)</span> 是非中心 <span class="math inline">\chi^2</span> 随机变量，自由度分别是 <span class="math inline">{n_1},{n_2}</span>。 <a href="https://en.wikipedia.org/wiki/Noncentral_F-distribution">wikipedia</a></li>
+<li>Normal 分布和 Uniform 分布分别是 Generalized error 分布的特例和极限情况。 <a href="https://en.wikipedia.org/wiki/Generalized_normal_distribution">wikipedia</a></li>
+<li>Binomial 分布是 Power series 分布的特例。 <a href="#证明-19">证明-19</a></li>
+<li>Normal 分布是 von Mises 分布在 <span class="math inline">\kappa \to \infin</span> 时的特例。 <a href="#证明-20">证明-20</a></li>
+<li>Half-normal，Rayleigh，Maxwell-Boltzmann 分布是 <span class="math inline">\chi</span> 分布在自由度分别为 <span class="math inline">n=1,2,3</span> 的情形。 <a href="#证明-21">证明-21</a></li>
+<li>两个独立的 Generalized gamma 随机变量的比值是 Beta 分布。 <a href="#证明-22">证明-22</a></li>
+</ul>
+<p>此外，还有一些没绘制在图表中变换，是由两种分布组合来得到第三种分布。以下是两个例子:</p>
+<ol type="1">
+<li>自由度 <span class="math inline">n</span> 的 <span class="math inline">t</span> 分布可定义为：<span class="math inline">\frac Z {\sqrt{X/n}}</span>, 其中 <span class="math inline">Z \sim N(0,1)</span>, <span class="math inline">X \sim \chi^2(n)</span>，且二者独立。 <a href="#证明-23">证明-23</a></li>
+<li>以 <span class="math inline">\delta</span> 为非中心参数的非中心Beta分布可以定义为：<span class="math inline">\frac X {X+Y}</span>，其中 <span class="math inline">X \sim \text{noncentral } \chi^2(\beta,\delta), Y \sim \chi^2(\gamma)</span>。 <a href="#证明-24">证明-24</a></li>
+</ol>
+<hr>
+<section id="证明-1" class="level4">
+<h4 class="anchored" data-anchor-id="证明-1">证明-1</h4>
+<p>多个随机变量的线性组合所服从的分布不是多个分布函数的简单叠加。比如计算掷两次骰子的点数之和的分布，和为 5 点的概率等于 <span class="math inline">\{(1, 4), (2, 3), (3, 2), (4, 1)\}</span> 四种情况的概率之和，也就是需要计算<strong>卷积</strong>。</p>
+<p>考虑随机变量 <span class="math inline">Y = a_1 X_1 + a_2 X_2</span> 的简单情形，其中随机变量 <span class="math inline">X_1, X_2</span> 独立。将 <span class="math inline">X_1</span> 视为自由的变量，则对于给定的 <span class="math inline">Y</span>，有 <span class="math inline">X_2=\frac {W - a_1 X_1}{a_2}</span>。于是 <span class="math inline">Y</span> 的概率密度函数 (PDF) 应为:</p>
+<p><span class="math display">f_Y(y)  = \int f_{X_1, X_2}(x_1, \frac {y - a_1 x_1}{a_2}) dx_1 = \int f_{X_1}(x_1)f_{X_2}(\frac {y - a_1 x_1}{a_2}) dx_1</span></p>
+<p>但这个积分比较难算，特别是当涉及多个随机变量时。于是考虑使用特征函数 (Characteristic function)，它对于计算多个随机变量的线性组合特别有用。特征函数是对概率分布的傅里叶变换。特征函数定义为:</p>
+<p><span class="math display">\varphi_X(t) \colonequals E[e^{itX}]=\int e^{itx} dF_X(x)=\int e^{itx} f_X(x)dx</span></p>
+<p>其中 <span class="math inline">E</span> 表示期望值，<span class="math inline">F_X, f_X</span> 分别是随机变量 <span class="math inline">X</span> 的累计分布函数 (CDF) 和 概率密度函数 (PDF).</p>
+<p>由于 <span class="math inline">X_1, X_2</span> 独立，所以期望值可以分解：</p>
+<p><span class="math display">
+\begin{align*}
+\varphi_Y(t) &amp;= E[e^{itY}] \\
+&amp;= \int \int e^{it(a_1 x_1 + a_2 x_2)} f_{X_1,X_2}(x_1,x_2) dx_1 dx_2  \\
+&amp;= \int e^{i a_1 t x_1} f_{X_1}(x_1) dx_1 \int e^{i a_2 t x_2} f_{X_2}(x_2) dx_2 \\
+&amp;= E[e^{i a_1 t x_1}]E[e^{i a_2 t x_2}]  \\
+&amp;= \varphi_{X_1}(a_1 t)\varphi_{X_2}(a_2 t)
+\end{align*}
+</span></p>
+<p>同理可以推广到多个随机变量的线性组合：</p>
+<p><span class="math display">\varphi_{a_1 X_1+...+a_n X_n}(t)=\varphi_{X_1}(a_1 t)...\varphi_{X_n}(a_n t)</span></p>
+<p>设 随机变量 <span class="math inline">Y=\sum_{i=1}^n a_i X_i</span>，其中 <span class="math inline">X_i</span> 是 <span class="math inline">n</span> 个独立的 Normal 随机变量 <span class="math inline">X_i \sim N(\mu_i, \sigma_i^2),\; i=1,2,...,n</span>。已知 Normal 分布的特征函数为：</p>
+<p><span class="math display">\varphi_X(t)=e^{i\mu t - \frac 1 2 \sigma^2 t^2}</span></p>
+<p>代入得到</p>
+<p><span class="math display">
+\begin{align*}
+\varphi_Y(t) &amp;= e^{i (a_1 t)\mu_1 - \frac 1 2 \sigma_1^2 (a_1 t)^2} ... e^{i (a_n t)\mu_n - \frac 1 2 \sigma_n^2 (a_n t)^2} \\
+&amp;= e^{i(a_1 \mu_1 +...+a_n \mu_n)t - \frac 1 2 (a_1^2\sigma_1^2+...+a_n^2\sigma_n^2) t^2} \\
+&amp;= e^{i \hat\mu t - \frac 1 2 {\hat \sigma}^2 t^2}
+\end{align*}
+</span></p>
+<p>对比可知</p>
+<p><span class="math display">Y \sim N(\hat \mu, {\hat \sigma}^2)=N(\sum_{i=1}^n a_i \mu_i, \sum_{i=1}^n a_i^2 \sigma_i^2)</span></p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-2" class="level4">
+<h4 class="anchored" data-anchor-id="证明-2">证明-2</h4>
+<p>涉及多个随机变量求和，类似于<a href="#证-1">证明-1</a>，还是使用特征函数。</p>
+<p>令随机变量 <span class="math inline">Y=\sum_{i=1}^n X_i</span>，其中 <span class="math inline">X_i \sim \chi^2(k_i),\; i=1,2,...,n</span> 是独立的服从 <span class="math inline">\chi^2</span> 分布的随机变量。</p>
+<p>已知 <span class="math inline">\chi^2</span> 分布的特征函数为</p>
+<p><span class="math display">\varphi_{X}(t)=(1-2it)^{-k/2}</span></p>
+<p>所以</p>
+<p><span class="math display">\varphi_Y(t)=\sum_{i=1}^n \varphi_{X_i}(t)=(1-2it)^{-\sum_{i=1}^n k_i/2}=(1-2it)^{-\hat k / 2}</span></p>
+<p>对比可知</p>
+<p><span class="math display">Y \sim \chi^2(\hat k)=\chi^2\bigg(\sum_{i=1}^n k_i \bigg)</span></p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-3" class="level4">
+<h4 class="anchored" data-anchor-id="证明-3">证明-3</h4>
+<p>只是简单的随机变量变换。设随机变量 <span class="math inline">Y=kX, \; k&gt;0</span>，则 <span class="math inline">Y</span> 的累计分布函数为：</p>
+<p><span class="math display">F_Y(y) \colonequals \Pr(Y \le y)=\Pr(X \le y/k)=\int_{-\infin}^{y/k} f_X(x)dx</span></p>
+<p>所以 <span class="math inline">Y</span> 的概率密度函数为</p>
+<p><span class="math display">f_Y(y) \colonequals \frac d {dy} F_Y(y) = \frac 1 k f_X(y/k)</span></p>
+<p>若随机变量 <span class="math inline">X \sim \text{Weibull}(\alpha, \beta)</span>，由定义其概率密度为：</p>
+<p><span class="math display">f_X(x) =\frac \beta \alpha x^{\beta - 1} \exp(-\frac 1 {\alpha} x^\beta)</span></p>
+<p>代入得</p>
+<p><span class="math display">f_Y(y) = \frac \beta {\alpha k^\beta} y^{\beta - 1} \exp(-\frac 1 {\alpha k^\beta} y^\beta)</span></p>
+<p>对比可知</p>
+<p><span class="math display">Y \sim \text{Weibull}(\alpha k^\beta, \beta)</span></p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-4" class="level4">
+<h4 class="anchored" data-anchor-id="证明-4">证明-4</h4>
+<p>可以利用 Lognormal 分布取对数得到 Normal 分布这个性质来证明。</p>
+<p>设随机变量 <span class="math inline">X_1 \sim \text{Lognormal}(\mu_1, \sigma_1^2), X_2 \sim \text{Lognormal}(\mu_2, \sigma_2^2)</span>，则随机变量 <span class="math inline">Y_1 = \ln(X_1) \sim N(\mu_1, \sigma_1^2), Y_2 = \ln(X_2) \sim N(\mu_2, \sigma_2^2)</span>。</p>
+<p>令随机变量 <span class="math inline">Z=X_1 X_2, W= \ln(Z) = \ln(X_1) + \ln(X_2) = Y_1 + Y_2</span>。由 <a href="#证明-1">证明-1</a> 可知, <span class="math inline">W \sim N(\mu_1+\mu_2, \sigma_1^2+\sigma_2^2)</span>，所以 <span class="math inline">Z \sim \text{Lognormal}(\mu_1+\mu_2, \sigma_1^2+\sigma_2^2)</span>。同理可以推广到多个随机变量的情形。</p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-5" class="level4">
+<h4 class="anchored" data-anchor-id="证明-5">证明-5</h4>
+<p>可以利用 F 分布是两个 <span class="math inline">\chi^2</span> 分布的比值这个性质来证明。</p>
+<p>设随机变量 <span class="math inline">U \sim \chi^2(d_1), V \sim \chi^2(d_2)</span>，且二者独立，则随机变量 <span class="math inline">X=\frac U {d_1} \big/ \frac V {d_2} \sim F(d_1, d_2)</span>，所以 <span class="math inline">1/X = \frac V {d_2} \big/ \frac U {d_1} \sim F(d_2, d1)</span> 。</p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-6" class="level4">
+<h4 class="anchored" data-anchor-id="证明-6">证明-6</h4>
+<p>设随机变量 <span class="math inline">Y=\min(X_1, X_2)</span>，其中 <span class="math inline">X_1 \sim \text{Exp}(\alpha_1), X_2 \sim \text{Exp}(\alpha_2)</span>，且 <span class="math inline">X_1, X_2</span> 独立，则 <span class="math inline">Y</span> 的累计分布函数为：</p>
+<p><span class="math display">
+\begin{align*}
+F_Y(y) &amp;\colonequals \Pr(Y \le y) \\
+&amp;=1-\Pr(Y&gt;y) \\
+&amp;=1-\Pr(X_1&gt;y, X_2&gt;y) \\
+&amp;=1-\Pr(X_1&gt;y) \Pr(X_2&gt;y)
+\end{align*}
+</span></p>
+<p>由定义，若随机变量 <span class="math inline">X \sim \text{Exp}(\alpha)</span>，则其概率密度函数为：</p>
+<p><span class="math display">f_X(x)=\frac 1 \alpha e^{-\frac x \alpha}, \; x&gt;0</span></p>
+<p>代入得</p>
+<p><span class="math display">F_Y(y)=1-\int_y^\infin\frac 1 {\alpha_1} e^{-\frac {x_1} {\alpha_1} } dx_1 \int_y^\infin\frac 1 {\alpha_2} e^{-\frac {x_2} {\alpha_2} } dx_2=1-e^{-\frac y {\alpha_1}}e^{-\frac y {\alpha_2}}</span></p>
+<p>于是 <span class="math inline">Y</span> 的概率密度函数为</p>
+<p><span class="math display">f_Y(y) \colonequals \frac d {dy} F_Y(y)=(\frac 1 {\alpha_1} + \frac 1 {\alpha_2}) e^{-y(\frac 1 {\alpha_1} + \frac 1 {\alpha_2})} = \frac 1 {\hat \alpha} e^{-\frac x {\hat \alpha}}</span></p>
+<p>对比可知</p>
+<p><span class="math display">Y \sim \text{Exp}(\hat \alpha)</span></p>
+<p>同理可以推广到多个随机变量的情形。</p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-7" class="level4">
+<h4 class="anchored" data-anchor-id="证明-7">证明-7</h4>
+<p>设随机变量 <span class="math inline">Y=\max(X_1, X_2)</span>，其中 <span class="math inline">X_1 \sim \text{standard power}(\beta_1), X_2 \sim \text{standard power}(\beta_2)</span>，且 <span class="math inline">X_1, X_2</span> 独立，则 <span class="math inline">Y</span> 的累计分布函数为</p>
+<p><span class="math display">
+\begin{align*}
+F_Y(y) &amp;\colonequals \Pr(Y \le y) \\
+&amp;=\Pr(X_1 \le y, X_2 \le y) \\
+&amp;=\Pr(X_1 \le y) \Pr(X_2 \le y)
+\end{align*}
+</span></p>
+<p>由定义，若随机变量 <span class="math inline">X \sim \text{standard power}(\beta)</span>，则其概率密度函数为</p>
+<p><span class="math display">f_X(x)=\beta x^{\beta - 1}, \; x\in(0,1)</span></p>
+<p>代入得</p>
+<p><span class="math display">F_Y(y)=\int_0^y \beta_1 x_1^{\beta_1 - 1} dx_1 \int_0^y \beta_2 x_2^{\beta_2 - 1} dx_2=y^{\beta_1}y^{\beta_2}</span></p>
+<p>于是 <span class="math inline">Y</span> 的概率密度函数为</p>
+<p><span class="math display">f_Y(y) \colonequals \frac d {dy} F_Y(y)=(\beta_1 + \beta_2) y^{\beta_1 + \beta_2 - 1}=\hat \beta y^{\hat \beta - 1}</span></p>
+<p>对比可知</p>
+<p><span class="math display">Y \sim \text{standard power}(\beta_1+\beta_2)</span></p>
+<p>同理可以推广到多个随机变量的情形。</p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-8" class="level4">
+<h4 class="anchored" data-anchor-id="证明-8">证明-8</h4>
+<p>Exponential 分布通常用于描述<strong>事件首次出现所需等待的时间</strong>。若随机变量 <span class="math inline">X \sim \text{Exp}(1 / \lambda)</span>，令 <span class="math inline">Y=X|X&gt;a,\; a&gt;0</span> 是 <span class="math inline">X</span> 被限制在 <span class="math inline">X&gt;a</span> 条件下的随机变量，其概率密度函数为：</p>
+<p><span class="math display">f_Y(y)=\frac {f_X(y)} {\Pr(X&gt;a)} = \frac {\lambda e^{-\lambda y}} {e^{-\lambda a}}=\lambda e^{-\lambda(y-a)} \text{ for } y&gt;a</span></p>
+<p>对比 Exponential 分布的概率密度函数：</p>
+<p><span class="math display">f_X(x)=\lambda e^{-\lambda x}</span></p>
+<p>可见这个分布只是平移了 <span class="math inline">a</span> 而已，分布和参数都不变。容易验证：</p>
+<p><span class="math display">\Pr(Y&gt;b) = \Pr(X &gt; b | X &gt; a) = \Pr(X &gt; b-a) \; \text{ for } b&gt;a</span></p>
+<p>这个等式的含义是，假如已知从 <span class="math inline">0</span> 时刻到 <span class="math inline">a</span> 时刻，公交车没到站的话 (即 <span class="math inline">X&gt;a</span>)，那么继续等待到 <span class="math inline">b</span> 时刻，车还没到的概率 与 无条件时 (即从 <span class="math inline">0</span> 时刻开始) 等待 <span class="math inline">b-a</span> 时间后，车还没到的概率相同。换言之，<strong>无论之前已经等了多久，公交车到站时间的概率分布不变，就好像之前从未等待过一样。</strong></p>
+<p><span class="math inline">\square</span></p>
+<p>Geometric 分布用于描述<strong>连续的Bernoulli实验中，要获得首次成功所需的实验次数</strong>。这个分布有两种稍有不同的定义方式：</p>
+<ol type="1">
+<li><span class="math inline">\Pr(X=k)=p(1-p)^{k-1}, \; k=1,2,3,...</span></li>
+<li><span class="math inline">\Pr(X'=k)=p(1-p)^k=\Pr(X=k+1), \; k=0,1,2,...</span></li>
+</ol>
+<p>其中 <span class="math inline">p</span> 是 Bernouli 实验成功的概率。先考虑第一种定义。随机变量 <span class="math inline">X</span> 表示经过 <span class="math inline">X</span> 次实验获得首次成功，也就是经历连续失败 <span class="math inline">X-1</span> 次外加最后成功的一次。</p>
+<p><span class="math display">
+\begin{align*}
+\Pr(X|X&gt;n) &amp;= \frac {\Pr(X)} {\Pr(X&gt;n)} \\
+&amp;= \frac {\Pr(X)} {1 - \Pr(X \le n)} \\
+&amp;= \frac {p(1-p)^{x-1}} {1 - \sum_{i=1}^{n} p(1-p)^{i-1}} \\
+&amp;= p(1-p)^{x-n-1} \\
+&amp;= \Pr(X-n)
+\end{align*}
+</span></p>
+<p>即 <span class="math inline">\Pr(X|X&gt;n)=\Pr(X-n)</span>。其中的 <span class="math inline">X-n</span> 意味着扣除那 <span class="math inline">n</span> 次失败，重新计数。换成白话就是，<strong>无论之前已经努力过多少次，承受了多少失败，距离成功还像当初一样遥远，就好像之前从未努力过一样</strong>。这种无记忆性也可以写成 <span class="math inline">\Pr(X&gt;m+n | X&gt;n)=\Pr(X&gt;m)</span>，对任意的 <span class="math inline">m,n</span> 都成立。注意等式右侧与 <span class="math inline">n</span> 无关，表示忘记历史。</p>
+<p>如果考虑 Geometric 分布的第二种定义，</p>
+<p><span class="math display">
+\begin{align*}
+\Pr(X'|X'&gt;n) &amp;= \frac {\Pr(X')} {\Pr(X'&gt;n)} \\
+&amp;= \frac {\Pr(X')} {1 - \Pr(X' \le n)} \\
+&amp;= \frac {p(1-p)^x} {1 - \sum_{i=0}^n p(1-p)^i} \\
+&amp;= p(1-p)^{x-n-1} \\
+&amp;= \Pr(X'-n-1)
+\end{align*}
+</span></p>
+<p>即 <span class="math inline">\Pr(X'|X'&gt;n)=\Pr(X'-n-1)</span>，同理得 <span class="math inline">\Pr(X'&gt;m+n|X'&gt;n)=\Pr(X'&gt;m-1)</span>，对任意的 <span class="math inline">m,n</span> 都成立。这里虽然也体现了与历史 <span class="math inline">n</span> 的无关性，但由于多了一个 <span class="math inline">-1</span>，并非标准定义下的无记忆性，所以 Geometric 分布的第二种定义<strong>不具备</strong>无记忆性。</p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-9" class="level4">
+<h4 class="anchored" data-anchor-id="证明-9">证明-9</h4>
+<p>若随机变量 <span class="math inline">X \sim \text{Uniform}(a,b)</span>, 令 <span class="math inline">Y=X|X&gt;k,\; k\in(a,b)</span> 是<span class="math inline">X</span>被限制在大于<span class="math inline">k</span>的条件下的随机变量. 其概率密度函数为:</p>
+<p><span class="math display">f_Y(y)=\frac {f_X(y)} {\Pr(X&gt;k)} = \frac {\frac 1 {b-a}} {\int_k^b \frac 1 {b-a}dx}=\frac 1 {b-k}, \; \text {for } y\in(k,b)</span></p>
+<p>对比均匀分布的概率密度函数:</p>
+<p><span class="math display">f_X(x)=\frac 1 {b-a}, \; x\in(a,b)</span></p>
+<p>可见 <span class="math inline">Y \sim \text{Uniform}(k, b)</span>, 但参数变化了.</p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-10" class="level4">
+<h4 class="anchored" data-anchor-id="证明-10">证明-10</h4>
+<p>若随机变量 <span class="math inline">X \sim \text{Exp}(\alpha)</span>, 则累计分布函数为</p>
+<p><span class="math display">F_X(x)=\int_0^x f_X(t)dt=\int_0^x \frac 1 \alpha e^{-\frac t \alpha} dt=1-e^{-\frac x \alpha}, \; x \ge 0</span></p>
+<p><span class="math inline">F_X(x)</span> 的定义域为 <span class="math inline">x\in [0,\infin)</span>, 值域为 <span class="math inline">F_X \in [0, 1]</span>, 且是递增函数, 所以有反函数</p>
+<p><span class="math display">g(u)=F_X^{-1}(u) = -\alpha \ln(1-u), \; u \in [0, 1]</span></p>
+<p><span class="math inline">g(u)</span> 是closed form这个性质可以用于随机数生成算法. 比如从均匀分布 <span class="math inline">Y \sim \text{Uniform}(0,1)</span> 的随机变量来构造一个服从指数分布的随机变量. 只需用 Inverse CDF 对 <span class="math inline">Y</span> 做变换即可. 即</p>
+<p><span class="math display">Z = g(Y) \sim \text{Exp}(\alpha)</span></p>
+<p>为了验证这一点, 可以计算 <span class="math inline">Z</span> 的累计分布函数, 并注意到 <span class="math inline">g(u)</span> 是递增函数, 有:</p>
+<p><span class="math display">F_Z(z)=\Pr(g(Y) \le g(z))=\Pr(Y \le g^{-1}(z))=\int_0^{g^{-1}(z)} 1 dt=g^{-1}(z)=F_X(z)</span></p>
+<p>可见 <span class="math inline">X</span> 与 <span class="math inline">Z</span> 具有同样的累计分布函数, 即服从同样的分布. 计算机只需把 <span class="math inline">Y</span> 的每个采样结果经过 <span class="math inline">Z=g(Y)</span> 这个简单的变换后, 就能以 <span class="math inline">O(1)</span> 的时间复杂度来得到服从指数分布的新随机数 <span class="math inline">Z</span> .</p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-11" class="level4">
+<h4 class="anchored" data-anchor-id="证明-11">证明-11</h4>
+<p>Beta-binomial分布是一种离散的复合分布. 它以Binomial分布为基础, 但分布参数 <span class="math inline">p</span> 不是固定值, 而是从 Beta 分布中抽取而来. 整个分布要以 Beta分布 的概率为权重遍历所有的参数 <span class="math inline">p</span>. 其PMF为:</p>
+<p><span class="math display">
+\begin{align*}
+f(x|n,a,b)&amp;=\int_0^1 \text{Bin}(x|n,p) \text{Beta}(p,a,b) dp \\
+&amp;= {n \choose x} \frac 1 {B(a,b)} \int_0^1 p^{x+a-1}(1-p)^{n-x+b-1} dp \\
+&amp;= {n \choose x} \frac {B(x+a, n-x+b)} {B(a,b)} \\
+&amp;= \frac {\Gamma(n+1)} {\Gamma(x+1)\Gamma(n-x+1)} \frac {\Gamma(x+a)\Gamma(n-x+b)}{\Gamma(n+a+b)} \frac {\Gamma(a)\Gamma(b)}{\Gamma(a+b)} \\
+\text {where } x = 0,1,...,n
+\end{align*}
+</span></p>
+<p>其中 <span class="math inline">B(a,b)</span> 是 Beta function:</p>
+<p><span class="math display">B(a,b)=\frac {\Gamma(a)\Gamma(b)}{\Gamma(a+b)} = \int_0^1 x^{a-1}(1-x)^{b-1}dx</span></p>
+<p>Pascal分布也叫负二项分布 (negative binomial distribution), 主要描述在一系列独立同分布的伯努利实验中, 达到指定的成功次数所需进行的实验次数。这与几何分布有相似之处, 不过几何分布只关心出现第一次成功所需的实验次数. Beta-Pascal分布也是一种离散的复合分布. 它以Pascal分布为基础, 但分布参数 <span class="math inline">p</span> 不是固定值, 而是从 Beta 分布中抽取而来. 整个分布要以 Beta分布 的概率为权重遍历所有的参数 <span class="math inline">p</span>.</p>
+<p>Gamma分布是一种连续概率分布, 主要用于描述等待k个独立的事件发生所需的时间, 假设这些事件以恒定的平均速率随机地发生. Gamma-Poisson 分布是一种离散的复合分布. 它以Poisson分布为基础, 但分布参数 <span class="math inline">\mu</span> 服从Gamma 分布. 其PMF为:</p>
+<p><span class="math display">
+\begin{align*}
+f(x|\alpha,\beta) &amp;= \int_0^\infin \frac {\mu^x e^{-\mu}}{x!} \frac 1 {\alpha^\beta \Gamma(\beta)} \mu^{\beta-1} e^{-\mu / \alpha} d\mu
+\end{align*}
+</span></p>
+<p>由于 <span class="math inline">\Gamma(c)=\int_0^\infin x^{c-1} e^{-x} dx</span>, 令 <span class="math inline">t=\mu(1+1/\alpha)</span>, 代入上式</p>
+<p><span class="math display">
+\begin{align*}
+f(x|\alpha,\beta) &amp;= \frac {1} {x! \alpha^\beta \Gamma(\beta)} \int_0^\infin \mu^{x+\beta-1} e^{-\mu(1+1/\alpha)} d\mu \\
+&amp;= \frac {1} {x! \alpha^\beta \Gamma(\beta)} \int_0^\infin (\frac t {1+1/\alpha})^{x+\beta-1} e^{-t} \frac 1 {1+1/\alpha} dt \\
+&amp;= \frac {1} {x! \alpha^\beta \Gamma(\beta)} (\frac 1 {1 + 1/\alpha})^{x+\beta} \int_0^\infin t^{x+\beta-1} e^{-t} dt \\
+&amp;= \frac {\Gamma(x+\beta) \alpha^x} {\Gamma(\beta) (1+\alpha)^{x+\beta} x! } \\
+\text{where } x=0,1,...
+\end{align*}
+</span></p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-12" class="level4">
+<h4 class="anchored" data-anchor-id="证明-12">证明-12</h4>
+<ol type="a">
+<li><p>指数分布的均值为2, 意味着分布参数 <span class="math inline">\alpha=2</span>. <span class="math inline">\chi^2</span> 分布的自由度为2, 意味着分布参数 <span class="math inline">n=2</span>. 此时两种分布的PDF均为: <span class="math inline">f(x)=\frac 1 2 e^{-x/2}, \; x&gt;0</span>.</p></li>
+<li><p>自由度 <span class="math inline">n=2k, \;k=1,2,...</span> 的 <span class="math inline">\chi^2</span> 分布 和 尺度参数 <span class="math inline">\alpha=2</span> 的 Erlang分布的PDF均为: <span class="math inline">f(x)=\frac 1 {2^k (k-1)!}x^{k-1} e^{-x/2}, \; x&gt;0</span>.</p></li>
+<li><p>样本大小 <span class="math inline">n=1</span> 的Kolmogorov-Smirnov分布的 CDF 为: <span class="math display">
+F_{D_1}(t)=\Pr(D_1 \le t)=\begin{cases}
+0 &amp; t \le \frac 1 2 \\
+2t-1 &amp; \frac 1 2 &lt; t &lt; 1 \\
+1 &amp; t \ge 1
+\end{cases}
+</span> 而 <span class="math inline">\text{Uniform}(\frac 1 2, 1)</span> 的 CDF 为: <span class="math display">
+F_X(x)=\begin{cases}
+0 &amp; x \le \frac 1 2 \\
+\int_{\frac 1 2}^x 2 du= 2x-1 &amp; \frac 1 2 &lt; x &lt; 1 \\
+1 &amp; x \ge 1
+\end{cases}
+</span> 二者一致.</p></li>
+</ol>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-13" class="level4">
+<h4 class="anchored" data-anchor-id="证明-13">证明-13</h4>
+<p>对于积分变换 <span class="math inline">F(X) \sim \text{Uniform}(0,1)</span>, 其实就是 <a href="#证明-10">证明-10</a> 的一般情况. 也就是通过 Inverse CDF (也称分位函数 quantile function), 把标准均匀分布变换为任意一种分布. 当然, 此处的 Inverse CDF 不一定具有 closed form 了.</p>
+<p>设随机变量 <span class="math inline">X \sim \text{Uniform}(0,1)</span>. 随机变量 <span class="math inline">Y</span> 的 CDF 为 <span class="math inline">F(y)</span>. 显然其 Inverse CDF: <span class="math inline">F^{-1}(p)</span> 的定义域是 <span class="math inline">[0, 1]</span>. 用这个函数将随机变量 <span class="math inline">X</span> 变换为 <span class="math inline">Z=F^{-1}(X)</span>. 下面只要证明 <span class="math inline">Z</span> 的 CDF <span class="math inline">F_Z(z)</span> 就是 <span class="math inline">Y</span> 的 CDF 即可.</p>
+<p><span class="math display">
+\begin{align*}
+F_Z(z) &amp;= \Pr(Z \le z) \\
+&amp;= \Pr(F^{-1}(X) \le z) \\
+&amp;= \Pr(X \le F(z)) \\
+&amp;= \int_0^{F(z)} 1 dt = F(z)
+\end{align*}
+</span></p>
+<p>对于积分变换 <span class="math inline">H(X) \sim \text{Exp}(1)</span>. 可以利用 累计风险函数 和 生存函数 的关系来证明. - 生存函数定义为 <span class="math inline">S(t) = 1 - F(t)=\Pr(T&gt;t)</span>, 表示等待到 <span class="math inline">t</span> 时刻还没发生事故的概率. - 风险函数 <span class="math inline">h(t)=\frac {f(t)}{S(t)}=-\frac d {dt} \ln S(t)</span>, 表示获知 <span class="math inline">T \le t</span> 都不会发生事故的前提下, <span class="math inline">t</span> 时刻发生事故的概率(或瞬时风险), 即 <span class="math inline">\Pr(T=t|T&gt;t)</span>. - 累计风险函数 <span class="math inline">H(t) = \int_{-\infin}^t h(u)du = -\ln S(t)</span> 就是累计到 <span class="math inline">t</span> 时刻的总风险. 值域是 <span class="math inline">[0, \infin]</span> .</p>
+<p>所以 <span class="math inline">e^{-H(t)} = S(t) = 1 - F(t)</span>. 进而利用 Inverse CDF 得到 <span class="math inline">t = F^{-1}(1 - e^{-H(t)})</span>. 这正是累计风险函数的反函数 <span class="math inline">H^{-1}(p)=F^{-1}(1-e^{-p})</span>. 设随机变量 <span class="math inline">T</span> 的 CDF 为 <span class="math inline">F(t)</span>. 用 <span class="math inline">H(t)</span> 将 <span class="math inline">T</span> 变换为 <span class="math inline">U=H(T)</span>. 下面证明 <span class="math inline">U \sim \text{Exp}(1)</span>, 也就是 <span class="math inline">U</span> 的 CDF <span class="math inline">F_U(u) = 1 - e^{-u}</span>.</p>
+<p><span class="math display">
+\begin{align*}
+F_U(u) &amp;= \Pr(U \le u) \\
+&amp;= \Pr(H(T) \le u) \\
+&amp;= \Pr(T \le H^{-1}(u)) \\
+&amp;= F(H^{-1}(u)) \\
+&amp;= F(F^{-1}(1-e^{-u})) \\
+&amp;= 1 - e^{-u}
+\end{align*}
+</span></p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-14" class="level4">
+<h4 class="anchored" data-anchor-id="证明-14">证明-14</h4>
+<p>设随机变量 <span class="math inline">X \sim \text{Weibull}(\alpha, \beta)</span>, 其PDF:</p>
+<p><span class="math display">f_X(x)=\frac \beta \alpha x^{\beta-1} e^{-x^\beta / \alpha}, \; x&gt;0</span></p>
+<p>令随机变量 <span class="math inline">Y=\log X</span>. 于是:</p>
+<p><span class="math display">\Pr(Y&lt;y)=\Pr(\log X &lt; y)=\Pr(X &lt; e^y)</span></p>
+<p>所以 <span class="math inline">Y</span> 的PDF为:</p>
+<p><span class="math display">
+\begin{align*}
+f_Y(y) &amp;=\frac d {dy} F_X(e^y) \\
+&amp;= f_X(e^y) e^y \\
+&amp;= \frac \beta \alpha e^{y(\beta-1)} e^{-e^{\beta y} / \alpha} e^y \\
+&amp;= \frac \beta \alpha e^{y \beta - e^{y \beta} / \alpha} \\
+\text{where } y \in \R
+\end{align*}
+</span></p>
+<p>所以 <span class="math inline">Y \sim \text{Extreme value}(\alpha, \beta)</span>. 同理可证逆变换.</p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-15" class="level4">
+<h4 class="anchored" data-anchor-id="证明-15">证明-15</h4>
+<p>Survival distribution是一个分布族. 其特点是support为 <span class="math inline">T \ge 0</span>, 且 <span class="math inline">T</span> 必须表示 <strong>time to event</strong>, 比如设备故障, 生物死亡的时间. 常见的 Survival distribution 有:</p>
+<ul>
+<li>Exponential distribution</li>
+<li>Weibull distribution</li>
+<li>Lognormal distribution</li>
+<li>Gamma distribution</li>
+</ul>
+<p>服从生存分布的随机变量 <span class="math inline">X</span> 的support都是 <span class="math inline">(0,\infin)</span>, 所以 <span class="math inline">Y=\log(X)</span>的support必然是 <span class="math inline">(-\infin,\infin)</span>. 利用 <a href="#证明-14">证明-14</a> 中的步骤即可证明:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><span class="math inline">X \in (0,\infin)</span></th>
+<th style="text-align: left;"><span class="math inline">Y=\log(X) \in (-\infin,\infin)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Exponential</td>
+<td style="text-align: left;">Log-Weibull</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Weibull</td>
+<td style="text-align: left;">Extreme value</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LogNormal</td>
+<td style="text-align: left;">Normal</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gamma</td>
+<td style="text-align: left;">Log-Gamma</td>
+</tr>
+</tbody>
+</table>
+<p>对服从 Gamma 分布的随机变量 <span class="math inline">X</span> 取倒数: <span class="math inline">Y=1/X</span>. 可以得到服从 Inverted gamma distribution:</p>
+<p><span class="math display">f_Y(y)=\frac {e^{-\frac 1 {\beta y}}(\frac 1 {\beta y})^\alpha}{y\Gamma(\alpha)} \; \text{ where y&gt;0} </span></p>
+<p>对于support为<span class="math inline">(0,1)</span>的随机变量 <span class="math inline">X</span>, 其CDF为 <span class="math inline">F(x) \in (0,1)</span>. 所以其反函数 <span class="math inline">F^{-1}(u) \in (0,1)</span>, 也是一个合格的CDF. 以此为CDF的随机变量 <span class="math inline">Y</span> 就是 <span class="math inline">X</span> 的 complementary distribution. 比如 <span class="math inline">X \sim \text{Standard power}(\beta)</span>. 则<span class="math inline">X</span> 的CDF为 <span class="math inline">F(x)=x^\beta</span>. 所以 <span class="math inline">F^{-1}(u)=u^{\frac 1 \beta}</span>. 如果 <span class="math inline">Y</span> 的CDF是 <span class="math inline">F^{-1}(y)</span>, 则其 PDF 为 <span class="math inline">\frac d {dy} F^{-1}(y)=\frac 1 \beta x^{\frac 1 \beta -1}</span>. 于是 Standard power distribution的 complementary distribution 就是其自身.</p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-16" class="level4">
+<h4 class="anchored" data-anchor-id="证明-16">证明-16</h4>
+<p>另外, 图-1 中的一些变换可以启发随机数生成器的设计. 比如 Box-Muller 算法, 将 <span class="math inline">\text{Uniform}(0,1)</span> 先变换到指数分布, 再到 <span class="math inline">\chi^2</span>分布, 再到标准正态分布, 最后利用缩放变换到所需的正态分布. <a href="#证明-16">证明-16</a></p>
+<p>Box-Muller 算法是由两个独立的标准均匀分布随机变量 <span class="math inline">U_1, U_2 \sim \text{Uniform}(0,1)</span> 出发, 利用一系列变换得到两个独立的服从标准正态分布的随机变量 <span class="math inline">X, Y\sim N(0,1)</span>. 注意, 因为标准正态分布的 Inverse CDF 不是 closed form, 所以此处不能使用 <a href="#证明-10">证明-10</a> 中的方法来生成随机数. Box-Muller 方法是利用了极坐标变换.</p>
+<p>对独立的随机变量 <span class="math inline">X, Y</span> 采样得到 <span class="math inline">(x,y)</span>, 可以将其视为在直角坐标系中的点. 变换到极坐标有:</p>
+<p><span class="math display">
+X^2+Y^2=R^2 \\
+X=R \cos\theta \\
+Y=R \sin\theta
+</span></p>
+<p>由于 <span class="math inline">X,Y\sim N(0,1)</span>, 所以 <span class="math inline">X^2, Y^2</span> 服从自由度为 1 的 <span class="math inline">\chi^2</span> 分布, 进而 <span class="math inline">R^2</span> 服从自由度为 2 的 <span class="math inline">chi^2</span> 分布. 由 <a href="#证明-12">证明-12</a> 可知这个分布就是 <span class="math inline">\text{Exp}(\alpha=2)</span> 的指数分布. 由 <a href="#证明-10">证明-10</a> 可知, 这个分布可以从随机变量 <span class="math inline">Z \sim \text{Uniform}(0,1)</span> 经由变换 <span class="math inline">f(z)=-2\ln(1-z)</span> 来得到. 令 <span class="math inline">U_1=1-Z \sim \text{Uniform}(0,1)</span>, 于是 <span class="math inline">R^2=-2\ln {U_1}</span>. 另一方面, 注意到 <span class="math inline">\theta \sim \text{Uniform}(0, 2\pi)</span>, 于是:</p>
+<p><span class="math display">
+R=\sqrt{-2\ln{U_1}} \\
+\theta=2\pi U_2
+</span></p>
+<p>把极坐标变换回笛卡尔坐标, 得到:</p>
+<p><span class="math display">
+X=R\cos\theta=\sqrt{-2\ln{U_1}} \cos(2\pi U_2) \\
+Y=R\sin\theta=\sqrt{-2\ln{U_1}} \sin(2\pi U_2)
+</span></p>
+<p>这意味着, 只要从标准均匀分布独立的采样出两个样本 <span class="math inline">(u_1, u_2)</span>, 代入上式, 就可以获得两个独立的服从标准正态分布的样本 <span class="math inline">(x,y)</span>. 所以整个过程可以视为标准均匀分布先变换到指数分布, 再到 <span class="math inline">\chi^2</span>分布, 再到标准正态分布, 最后利用缩放变换 <span class="math inline">\mu+\sigma X \sim N(\mu, \sigma^2)</span> 到所需的正态分布.</p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-17" class="level4">
+<h4 class="anchored" data-anchor-id="证明-17">证明-17</h4>
+<p>这只在特定的分布参数下才成立. 设随机变量 <span class="math inline">X \sim \text{Exp}(\lambda)</span>, <span class="math inline">Y=[X]</span>. 也就是说, 比如 <span class="math inline">\Pr(0 \le X &lt; 1)=\Pr(Y=0)</span>.</p>
+<p><span class="math display">
+\begin{align*}
+\Pr(Y=n) &amp;= \int_n^{n+1} f_X(x; \lambda) dx \\
+&amp;= \int_n^{n+1} \lambda e^{-\lambda x} dx \\
+&amp;= e^{-n\lambda}(1-e^{-\lambda}) \;\; n=0,1,2,...
+\end{align*}
+</span></p>
+<p>容易验证, <span class="math inline">Y \sim \text{Geometric}(p=1 - e^{-\lambda})</span>.</p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-18" class="level4">
+<h4 class="anchored" data-anchor-id="证明-18">证明-18</h4>
+<p>令随机变量 <span class="math inline">Y=\frac 1 {1 + (n_1/n_2)X}, \text{ where } X \sim F(n_1, n_2), \; n_1&gt;0, n_2&gt;0, X&gt;0, Y \in (0,1)</span>. 于是<span class="math inline">Y</span> 的 CDF:</p>
+<p><span class="math display">
+\begin{align*}
+F_Y(y) &amp;= \Pr(Y \le y) = \Pr(\frac 1 {1 + (n_1/n_2)X} \le y) \\
+&amp;= \Pr(X \ge \frac {n_2}{n_1}(\frac 1 y - 1)) \\
+&amp;= 1 - F_X(\frac {n_2}{n_1}(\frac 1 y - 1))
+\end{align*}
+</span></p>
+<p>将 F-distribution 的CDF: <span class="math inline">F_X(x)=I_{\frac {n_1 x}{n_1 x + n_2}}(\frac {n_1} 2, \frac {n_2} 2)</span>, 代入得:</p>
+<p><span class="math display">
+\begin{align*}
+F_Y(y) &amp;= 1 - I_{1-y}(\frac {n_1} 2, \frac {n_2} 2) \\
+&amp;= I_y(\frac {n_2} 2, \frac {n_1} 2)
+\end{align*}
+</span></p>
+<p>这正是分布 Beta distribution 的CDF. 所以 <span class="math inline">Y \sim \text{Beta}(\frac {n_2} 2, \frac {n_1} 2)</span>.</p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-19" class="level4">
+<h4 class="anchored" data-anchor-id="证明-19">证明-19</h4>
+<p>Power series distribution是一个重要分布, 很多离散分布都是它的特例. 这个分布的 PDF 为:</p>
+<p><span class="math display">f(x; c)=\frac {a_x c^x} {g(c)} = \frac {a_x c^x} {\sum_{i=0}^\infin a_i c^i}, \text{ where } c&gt;0, x=0,1,2,...</span></p>
+<p>对应于 <span class="math inline">\text{Binomial}(x;n,p)</span>. 当 <span class="math inline">g(c) = (1+c)^n, \text{ where } c=\frac p {1-p}</span> 时,</p>
+<p><span class="math display">
+\begin{align*}
+f(x; c) &amp;= \frac {a_x (\frac p {1-p})^x} {(1-p)^{-n}} \\
+&amp;= a_x p^x (1-p)^{n-x}
+\end{align*}
+</span></p>
+<p>其中 <span class="math inline">a_x</span> 是 <span class="math inline">(1+c)^n</span> 的第 <span class="math inline">x</span> 项系数, 正好对应了二项式系数. 所以二项分布是Power series distribution的特例.</p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-20" class="level4">
+<h4 class="anchored" data-anchor-id="证明-20">证明-20</h4>
+<p>von Mises 分布是圆上的连续分布，通常用于描述方位或角度数据。其PDF为:</p>
+<p><span class="math display">f(\theta;\mu,\kappa)=\frac {e^{\kappa \cos(\theta-\mu)}}{2\pi I_0(\kappa)}, \text{ where } \theta \in (0, 2\pi)</span></p>
+<p>由于 <span class="math inline">\cos(0)=1</span>, 可知分布的概率密度主要集中在 <span class="math inline">\theta \approx \mu</span> 附近, 而且 <span class="math inline">\kappa</span> 越大越集中. 所以当 <span class="math inline">\kappa \gg 0</span> 时, 可以用Taylor展开来分析 <span class="math inline">\theta \approx \mu</span> 时的局部行为. 将 <span class="math inline">\cos(\theta-\mu) \approx 1-\frac 1 2 (\theta-\mu)^2</span> 代入PDF得到:</p>
+<p><span class="math display">
+\begin{align*}
+f(\theta;\mu,\kappa)&amp;\approx \frac {e^{\kappa(1 - \frac 1 2 (\theta-\mu)^2)}}{2\pi I_0(\kappa)} \\
+&amp;=\frac {e^{-\frac {\kappa (\theta - \mu)^2} 2 }} {2\pi e^{-\kappa} I_0(\kappa)} \\
+&amp;=\frac 1 {2\pi e^{-1/\sigma^2} I_0(1/\sigma^2)} e^{-\frac {(\theta-\mu)^2} {2\sigma^2}} &amp; \text{ let } \kappa=1/\sigma^2 \\
+&amp;\approx \frac 1 {\sqrt{2\pi}\sigma} e^{-\frac {(\theta-\mu)^2} {2\sigma^2}} &amp; \text { normalize with } \theta \in \R
+\end{align*}
+</span></p>
+<p>这正是 Normal 分布.</p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-21" class="level4">
+<h4 class="anchored" data-anchor-id="证明-21">证明-21</h4>
+<p><span class="math inline">\chi</span> 分布是定义在非负实数上的连续分布, 描述了多个独立的标准正态分布随机变量的平方和的平方根的分布, 亦即多元高斯随机变量与原点的欧式距离的分布. <span class="math inline">\chi</span> 分布有一个分布参数: 自由度. 当自由度为 1 时, <span class="math inline">X \sim N(0,1)</span>, ; |X| (1)$. 由 <span class="math inline">\Gamma(\frac 1 2)=\sqrt \pi</span>, 得到PDF:</p>
+<p><span class="math display">f_1(x) = \sqrt {\frac 2 \pi} \exp\Big(-\frac {x^2} 2\Big), \; x \ge 0</span></p>
+<p>当自由度为 2 时, 对应 <span class="math inline">\text{Rayleigh}(1)</span> 分布. 可以描述二维平面内向量长度的分布, 比如机场跑道附近的风速, 随机复数的模. 都是假设随机向量在两个方向上独立的服从标准正态分布. 其PDF为:</p>
+<p><span class="math display">f_2(x) = x \exp\Big(-\frac{x^2} 2\Big), \; x \ge 0</span></p>
+<p>当自由度为 3 时, 对应 <span class="math inline">\text{Maxwell-Boltzmann}(1)</span> 分布. 可以描述三维空间种的向量长度的分布. 尤其是描述理想气体分子在平衡态下的速度或动能的分布. 由 <span class="math inline">\Gamma(\frac 3 2)=\sqrt \pi / 2</span>, 得到PDF:</p>
+<p><span class="math display">f_3(x) = \sqrt {\frac 2 \pi} x^2 \exp\Big(-\frac {x^2} 2\Big), \; x \ge 0</span></p>
+<p>正好是 Maxwell-Boltzmann分布在尺度参数 <span class="math inline">a=1</span> 时的情形. 一般的, 这个分布参数为 <span class="math inline">a=\sqrt {\frac {kT} m}</span>, 其中 <span class="math inline">k</span> 是Boltzmann常数, <span class="math inline">T</span>是气体温度, <span class="math inline">m</span> 是分子质量. <span class="math inline">a^2</span>与方差成正比. 所以相同温度下, 分子质量越小的理想气体, 其动能分布越分散.</p>
+<p><span class="math display">f_{MB}(v; a) = \sqrt{\frac 2 \pi} \frac {x^2} {a^3} \exp\Big(-\frac {x^2} {2a^2}\Big)=\Big(\frac m {2\pi k T}\Big)^{\frac 3 2} 4\pi v^2 \exp\Big(-\frac {m v^2} {2kT}\Big), \; v \ge 0</span></p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-22" class="level4">
+<h4 class="anchored" data-anchor-id="证明-22">证明-22</h4>
+<p>Gamma分布的PDF:</p>
+<p><span class="math display">f(x; a, b)=\frac 1 {a^b \Gamma(b)} x^{b-1} e^{-x/a}, \; x &gt; 0</span></p>
+<p>Generalized gamma分布的PDF:</p>
+<p><span class="math display">f(x; a, b, c)=\frac c {a^{bc} \Gamma(b)} x^{bc-1} e^{-(x/a)^c}, \; x &gt; 0</span></p>
+<p>可见Generalized主要体现在参数 <span class="math inline">c</span> 上, 使得指数里面多了一层指数. 这个分布囊括了Gamma, <span class="math inline">\chi</span>, <span class="math inline">\chi^2</span>, exponential, Weibull分布. 论文中指出, 如果两个独立的随机变量 <span class="math inline">X,Y</span> 分别服从参数为 <span class="math inline">(a_1, b_1, c), (a_2, b_2, c)</span> 的generalized gamma分布, 则随机变量</p>
+<p><span class="math display">U=\frac {T^c} {T^c + (a_1/a_2)^c} \sim \text{Beta}(b_1, b_2), \; \text{ where } T=\frac X Y</span></p>
+<p>下面要证明这个结论。采用Jacobian变换并直接积分的方法。</p>
+<p>令 <span class="math inline">k=a_1/a_2</span>, 随机变量 <span class="math inline">W=Y</span>, 用 <span class="math inline">U,W</span> 来表达 <span class="math inline">X,Y</span>, 得到 <span class="math inline">X=(\frac U {1-U})^{\frac 1 c} k W</span>. 于是联合概率密度:</p>
+<p><span class="math display">
+\begin{align*}
+f_{U,W}(u, w) &amp;= f_{X,Y}(x,y) \cdot \begin{Vmatrix}\dfrac{\partial (x, y)}{\partial (u,w)}\end{Vmatrix} \\
+&amp;= f_{X,Y}\Big((\frac u {1-u})^{\frac 1 c} k w, w\Big) \cdot \begin{Vmatrix}\dfrac{\partial \Big((\frac u {1-u})^{\frac 1 c} k w, w\Big)}{\partial (u,w)}\end{Vmatrix} \\
+&amp;= f_{X,Y}\Big((\frac u {1-u})^{\frac 1 c} k w, w\Big) \cdot \begin{Vmatrix} \frac {kw}{cu(1-u)}(\frac u {1-u})^{\frac 1 c} &amp; k (\frac u {1-u})^{\frac 1 c} \\ 0 &amp; 1\end{Vmatrix} \\
+&amp;=f_{X,Y}\Big((\frac u {1-u})^{\frac 1 c} k w, w\Big) \Big\lvert \frac {kw}{cu(1-u)}(\frac u {1-u})^{\frac 1 c} \Big\rvert \\
+&amp;=f_{X,Y}(kws,w) \Big\lvert \frac {kws}{cu(1-u)} \Big\rvert &amp; \text{ let } s=(\frac u {1-u})^{\frac 1 c}
+\end{align*}
+</span></p>
+<p>于是 <span class="math inline">U</span> 的概率密度可以由边缘概率求出:</p>
+<p><span class="math display">
+\begin{align*}
+f_U(u) &amp;= \int_\R f_{U,W}(u, w)dw \\
+&amp;= \int_0^\infin f_{X,Y}(kws,w) \Big\lvert \frac {kws}{cu(1-u)} \Big\rvert dw &amp; \because w=y &gt; 0 \\
+&amp;=\int_0^\infin f_X(kws) f_Y(w) \frac {kws}{cu(1-u)} dw &amp; \because X,Y \text{independent}, u\in(0,1), k,s,w,c&gt;0 \\
+&amp;= \frac {ks}{cu(1-u)} \int_0^\infin f(kws; a_1, b_1, c) f(w; a_2, b_2, c) wdw \\
+&amp;= \frac {ks}{cu(1-u)} \int_0^\infin \frac c {a_1^{b_1 c} \Gamma(b_1)} (kws)^{b_1 c -1}e^{- (kws / a_1)^c} \frac c {a_2^{b_2 c} \Gamma(b_2)} w^{b_2 c - 1} e^{-(w/a_2)^c} wdw \\
+&amp;= \frac {ks} {cu(1-u)} \frac {c^2 (ks)^{b_1c-1}}{a_1^{b_1c}a_2^{b_2c}\Gamma(b_1)\Gamma(b_2)} \int_0^\infin w^{b_1c+b_2c-1}e^{-(kws/a_1)^c-(w/a_2)^c}dw \\
+&amp;= \frac {c s^{b_1c}} {u(1-u) {a_2^{b_1c + b_2c} \Gamma(b_1)\Gamma(b_2)}} \cdot I &amp; \text{ where } I \text{ is integral part}\\
+\end{align*}
+</span></p>
+<p>看起来积分部分要能凑出个 <span class="math inline">\Gamma(b_1+b_2)</span>. 令</p>
+<p><span class="math display">r=g(w)=(kws/a_1)^c+(w/a_2)^c=(w/a_2)^c(s^c+1)</span></p>
+<p>显然 <span class="math inline">g(w)</span> 是递增函数, <span class="math inline">r\in(0, \infin)</span>. 于是</p>
+<p><span class="math display">
+\begin{align*}
+w &amp;= g^{-1}(r)=a_2 (\frac r {s^c+1})^{\frac 1 c} \\
+dw &amp;= \frac {a_2} c (s^c+1)^{-\frac 1 c} r^{\frac 1 c - 1}dr
+\end{align*}
+</span></p>
+<p>代入积分部分 <span class="math inline">I</span> 得到:</p>
+<p><span class="math display">
+\begin{align*}
+I &amp;= \int_{g(0)}^{g(\infin)} (a_2(\frac r {s^c+1})^{\frac 1 c})^{b_1c+b_2c-1} e^{-r} \frac {a_2}c (s^c+1)^{-\frac 1 c}r^{\frac 1 c - 1}dr  \\
+&amp;= a_2^{b_1c+b_2c} \frac 1 c (s^c+1)^{-b_1-b_2} \int_0^\infin r^{b_1+b_2-1} e^{-r} dr \\
+&amp;= a_2^{b_1c+b_2c} \frac 1 c (s^c+1)^{-b_1-b_2} \Gamma(b_1+b_2)
+\end{align*}
+</span></p>
+<p>代入到 <span class="math inline">f_U(u)</span> 得:</p>
+<p><span class="math display">
+\begin{align*}
+f_U(u) &amp;= \frac {c s^{b_1c}} {u(1-u) {a_2^{b_1c + b_2c} \Gamma(b_1)\Gamma(b_2)}} a_2^{b_1c+b_2c} \frac 1 c (s^c+1)^{-b_1-b_2} \Gamma(b_1+b_2) \\
+&amp;= \frac {\Gamma(b_1+b_2)} {\Gamma(b_1)\Gamma(b_2)} \frac {s^{b_1c}(s^c+1)^{-b_1-b_2}}{u(1-u)} \\
+&amp;= \frac {\Gamma(b_1+b_2)} {\Gamma(b_1)\Gamma(b_2)} u^{b_1-1} (1-u)^{b_2-1} &amp; \because s^c=\frac u {1-u}
+\end{align*}
+</span></p>
+<p>所以 <span class="math inline">U \sim \text{Beta}(b_1, b_2)</span>.</p>
+<p>特别的, 当 <span class="math inline">c=1</span> 时, generalized gamma 分布退化为 gamma 分布. 再让 <span class="math inline">a_1=a_2=a</span>, 可以得到:</p>
+<p><span class="math display">\frac X {X+Y} \sim \text{Beta}(b_1, b_2)</span></p>
+<p>其中随机变量 <span class="math inline">X,Y</span> 独立且 <span class="math inline">X \sim \text{Gamma}(a, b_1), Y \sim \text{Gamma}(a, b_2)</span>.</p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-23" class="level4">
+<h4 class="anchored" data-anchor-id="证明-23">证明-23</h4>
+<p>令随机变量 <span class="math inline">W=X&gt;0, U = \frac Z {\sqrt{X / n}} \in \R</span>。 用 <span class="math inline">U, W</span> 来表达 <span class="math inline">X,Z</span> ，得到 <span class="math inline">Z=U \sqrt{W/n} \in \R</span>。 所以 <span class="math inline">U,W</span> 的联合概率密度:</p>
+<p><span class="math display">
+\begin{align*}
+f_{U,W}(u,w) &amp;= f_{X,Z}(x,z) \cdot \begin{Vmatrix}\dfrac{\partial (x, z)}{\partial (u,w)}\end{Vmatrix} \\
+&amp;= f_{X,Z}(w, u \sqrt{w/n}) \cdot \begin{Vmatrix}\dfrac{\partial (w, u \sqrt{w/n})}{\partial (u,w)}\end{Vmatrix} \\
+&amp;= f_{X,Z}(w, u \sqrt{w/n}) \cdot \begin{Vmatrix} 0 &amp; 1 \\ \sqrt{w/n} &amp; \frac u {2\sqrt{nw}} \end{Vmatrix} \\
+&amp;= f_{X,Z}(w, u \sqrt{w/n}) \sqrt{w/n}
+\end{align*}
+</span></p>
+<p>所以 <span class="math inline">U</span> 的PDF可以由边缘概率得出：</p>
+<p><span class="math display">
+\begin{align*}
+f_U(u) &amp;= \int_0^\infin f_{X,Z}(w, u \sqrt{w/n}) \sqrt{w/n} \, dw \\
+&amp;= \int_0^\infin f_X(w) f_Z(u \sqrt{w/n}) \sqrt{w/n} \, dw &amp; \because \text{independent}  \\
+&amp;= \int_0^\infin \frac 1 {2^{n/2} \Gamma(n/2)} w^{n/2-1}e^{-w/2} \frac 1 {\sqrt{2\pi}} e^{-\frac {u^2w} {2n}} \sqrt{w/n} \, dw \\
+&amp;= \frac {2^{-(n+1)/2}} {\sqrt{n\pi} \Gamma(n/2)} \int_0^\infin w^{(n-1)/2} e^{-\frac {(u^2+n)w}{2n}} \, dw
+\end{align*}
+</span></p>
+<p>令 <span class="math inline">t=g(w)=\frac {(u^2+n)w}{2n}</span>, 于是</p>
+<p><span class="math display">
+\begin{align*}
+w &amp;=\frac {2nt} {u^2+n} \\
+dw &amp;= \frac {2n} {u^2+n} \, dt
+\end{align*}
+</span></p>
+<p>代入 <span class="math inline">f_U(u)</span> 得到：</p>
+<p><span class="math display">
+\begin{align*}
+f_U(u) &amp;= \frac {2^{-(n+1)/2}} {\sqrt{n\pi} \Gamma(n/2)} \int_{g(0)}^{g(\infin)} \Big(\frac {2nt} {u^2+n}\Big)^{(n-1)/2}e^{-t} \frac {2n} {u^2+n} \, dt \\
+&amp;= \frac {2^{-(n+1)/2}} {\sqrt{n\pi} \Gamma(n/2)} \Big(\frac {2n} {u^2+n}\Big)^{(n+1)/2} \int_0^\infin t^{(n+1)/2-1}e^{-t} \, dt \\
+&amp;= \frac 1 {\sqrt{n\pi} \Gamma(n/2)} \Big(\frac n {u^2+n}\Big)^{(n+1)/2} \Gamma((n+1)/2)
+\end{align*}
+</span></p>
+<p>而这正是 <span class="math inline">t</span> 分布的PDF。</p>
+<p><span class="math inline">\square</span></p>
+<hr>
+</section>
+<section id="证明-24" class="level4">
+<h4 class="anchored" data-anchor-id="证明-24">证明-24</h4>
+<p>以 <span class="math inline">\delta</span> 为非中心参数的非中心Beta分布可以定义为: <span class="math inline">\frac X {X+Y}</span>, 其中 <span class="math inline">X \sim \text{noncentral } \chi^2(\beta,\delta), Y \sim \chi^2(\gamma)</span></p>
+<p>令随机变量 <span class="math inline">U=\frac X {X+Y} \in (0,1), W=X&gt;0</span>. 用 <span class="math inline">U,W</span> 来表达 <span class="math inline">X,Y</span>, 得到 <span class="math inline">Y=\frac W U - W</span>. 所以 <span class="math inline">U,W</span> 的联合概率密度:</p>
+<p><span class="math display">
+\begin{align*}
+f_{U,W}(u,w) &amp;= f_{X,Y}(x,y) \cdot \begin{Vmatrix}\dfrac{\partial (x, y)}{\partial (u,w)}\end{Vmatrix} \\
+&amp;= f_{X,Y}(w, \frac w u - w)) \cdot \begin{Vmatrix}\dfrac{\partial (w, \frac w u - w)}{\partial (u,w)}\end{Vmatrix} \\
+&amp;= f_{X,Y}(w, \frac w u - w) w u^{-2}
+\end{align*}
+</span></p>
+<p>再利用 <span class="math inline">X, Y</span> 的独立性, 所以 <span class="math inline">U</span> 的PDF可以由边缘概率得出:</p>
+<p><span class="math display">
+\begin{align*}
+f_U(u) &amp;= \int_0^\infin f_X(w) f_Y(\frac w u - w) w u^{-2} dw \\
+&amp;= \int_0^\infin \sum_{k=0}^\infin \frac {\exp({-\frac \delta 2})(\frac \delta 2)^k}{k!} \cdot \frac {\exp(- \frac w 2) w^{k + \frac \beta 2 - 1}}{2^{k+ \frac \beta 2} \Gamma(k + \frac \beta 2)} \cdot \frac 1 {2^{\frac \gamma 2} \Gamma(\frac \gamma 2)} (\frac w u -w)^{\frac \gamma 2-1} e^{-\frac 1 2 (\frac w u-w)}  w u^{-2} dw \\
+&amp;= \sum_{k=0}^\infin \Big(\frac {e^{-\frac \delta 2}} {k!}\Big) \Big(\frac \delta 2 \Big)^k
+\frac {2^{-(k+ \frac \beta 2+\frac \gamma 2)}} {\Gamma(k+ \frac \beta 2) \Gamma(\frac \gamma 2)} \cdot u^{-\frac \gamma 2-1} (1-u)^{\frac \gamma 2-1} \cdot \int_0^\infin e^{-\frac w {2u}} w^{k+ \frac \beta 2+ \frac \gamma 2-1} \, dw \\
+&amp;= \sum_{k=0}^\infin \Big(\frac {e^{-\frac \delta 2}} {k!}\Big) \Big(\frac \delta 2 \Big)^k
+\frac {2^{-(k+ \frac \beta 2+\frac \gamma 2)}} {\Gamma(k+ \frac \beta 2) \Gamma(\frac \gamma 2)} \cdot u^{-\frac \gamma 2-1} (1-u)^{\frac \gamma 2-1} \cdot 2^{k + \frac \beta 2+ \frac \gamma 2} u^{k + \frac \beta 2 + \frac \gamma 2} \Gamma(k + \frac \beta 2 + \frac \gamma 2) \\
+&amp;= \sum_{k=0}^\infin \Big(\frac {e^{-\frac \delta 2}} {k!}\Big) \Big(\frac \delta 2 \Big)^k
+\frac {\Gamma(k + \frac \beta 2 + \frac \gamma 2)} {\Gamma(k+ \frac \beta 2) \Gamma(\frac \gamma 2)} u^{k+\frac \beta 2 - 1} (1-u)^{\frac \gamma 2 - 1}
+\end{align*}
+</span></p>
+<p>而这个正是以 <span class="math inline">\delta</span> 为非中心参数, 以 <span class="math inline">\frac \beta 2, \frac \gamma 2</span> 为形状参数的非中心Beta分布的PDF.</p>
+<p><span class="math inline">\square</span></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "已复制");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "已复制");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -2,6 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Statistics Concepts You Should Know/index.html",
+      "/posts/0.999...=1/index.html",
+      "/posts/univariate_distribution_relationships/index.html",
       "/posts/beta_distribution/index.html",
       "/posts/dirichlet_distribution/index.html"
     ]

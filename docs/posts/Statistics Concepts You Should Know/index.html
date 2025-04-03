@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Shen Lei">
+
+<title>你应该知道的统计学概念 – blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f3c2ea88cadbcfb37ba28ffa2c97cfc1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-ae2d0dcda2edce4ab590422bb373b64f.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="切换深色模式"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">你应该知道的统计学概念</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Math</div>
+                <div class="quarto-category">Probability</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">作者</div>
+      <div class="quarto-title-meta-contents">
+               <p>Shen Lei </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">发布于</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">2025年3月20日</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  <div>
+    <div class="abstract">
+      <div class="block-title">摘要</div>
+      <p>罗列一些重要的统计学概念，简述概念的含义与用法，作为日后参考使用。</p>
+    </div>
+  </div>
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="数据-data" class="level3">
+<h3 class="anchored" data-anchor-id="数据-data">1. 数据 (Data)</h3>
+<p>数据是一个通用术语，指我们观察到的信息。数据有不同的类型：</p>
+<ul>
+<li><p><strong>定量数据 (Quantitative data)</strong>：数值型的数据。有很多种。</p>
+<ul>
+<li><p><strong>离散数据 (Discrete data)</strong>：比如用整数表示的数据。</p>
+<ul>
+<li><p><strong>二元数据 (Binary data)</strong>：一类重要的离散数据，因为数值 <span class="math inline">0,1</span> 可以表示 <span class="math inline">\text{True}, \text{False}</span> 或者 <span class="math inline">\text{On}, \text{Off}</span>。</p></li>
+<li><p><strong>类别数据 (Categorical data)</strong>：可以看作是二元数据的进一步扩展，比如用 <span class="math inline">1,2,3</span> 分别表示 <span class="math inline">A,B,C</span> 三个不同的组或类别。</p></li>
+</ul></li>
+<li><p><strong>连续数据 (Continuous data)</strong>：常用连续的实数表示的数据，比如身高、体重、等待某事件发生所需的时间 <strong>(Time-to-event data)</strong> 等。</p></li>
+</ul></li>
+<li><p><strong>定性数据 (Qualitative data)</strong>：文字型的数据。</p></li>
+</ul>
+</section>
+<section id="随机性-randomness" class="level3">
+<h3 class="anchored" data-anchor-id="随机性-randomness">2. 随机性 (Randomness)</h3>
+<p><strong>随机性源于我们对世界的无知</strong>。即使世界是由一个固定的、确定性的伪随机算法生成的，只要我们无法获取算法的种子（seed）或完整的规则，世界在我们看来就是随机的。也就是说，随机性并非一定是宇宙本身固有的，而是我们对宇宙理解的限制所导致的。</p>
+<p>几乎所有数据都受到随机性的影响，阻止我们做出完美预测，也让我们无法在赌场100%赢钱。这引出了一个重要问题：在随机性存在的情况下，我们如何从数据中学习？</p>
+</section>
+<section id="统计学-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="统计学-statistics">3. 统计学 (Statistics)</h3>
+<p>统计学可以被视为研究数据的科学，包括数据的<strong>收集、分析与展示</strong>。统计学家的目标是<strong>透过数据中的随机性，发现其背后的结构，并将其转化为有用的信息</strong>。掌握统计学的人可以通过分析、处理数据而获得丰厚的回报。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</section>
+<section id="概率论-probability-theory" class="level3">
+<h3 class="anchored" data-anchor-id="概率论-probability-theory">4. 概率论 (Probability theory)</h3>
+<p>随机性往往跟混沌（Chaotic）、不受控制（Uncontrolled）联系在一起，概率论则是研究随机性的内在结构的科学，让人们可以理解并运用随机性。它与统计学的区别在于，<strong>概率论是一个数学分支，是基于一些前提假设建构起来的逻辑大厦，其理论本身的发展并不需要实验数据</strong>。而统计学是一门实证性的科学，必须先收集到数据才能开始研究。概率论是统计学的理论基础。</p>
+</section>
+<section id="随机变量-random-variable" class="level3">
+<h3 class="anchored" data-anchor-id="随机变量-random-variable">5. 随机变量 (Random variable)</h3>
+<p>概率论中，用于表示随机数据的核心对象就是随机变量。它可以取不同的值，每个值都有不同的概率。随机变量常用 <span class="math inline">X</span> 表示，而某个具体的取值则用 <span class="math inline">x</span> 表示。其<strong>本质是一个函数</strong>，将试验的所有可能结果 (Outcomes) 映射到数值。根据数值类型的不同，随机变量又可分为连续的、离散的、混合的。</p>
+</section>
+<section id="概率分布-probability-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="概率分布-probability-distribution">6. 概率分布 (Probability distribution)</h3>
+<p>描述随机变量可能取值的概率，揭示了数据的随机性中隐藏的结构。所有随机变量都具有<strong>累计分布函数 (Cumulative distribution functionm, CDF)</strong> 。随机变量的类型，由累计分布函数可以导出：</p>
+<ul>
+<li><strong>概率密度函数 (Probability density function, PDF)</strong>：用于描述连续型随机变量取值的概率。</li>
+<li><strong>概率质量函数 (Probability mass function, PMF)</strong>：用于描述离散型随机变量取值的概率。</li>
+</ul>
+<p>概率分布可以是任何形状的，但有一些常见的分布：</p>
+<ul>
+<li><strong>均匀分布 (Uniform distribution)</strong>：表示所有取值的可能性都是相等的。</li>
+<li><strong>伯努利分布 (Bernoulli distribtion)</strong>：用于描述二元数据的概率，比如在游戏中获胜的概率。</li>
+<li><strong>二项分布 (Binomial distribution)</strong>：描述经过 <span class="math inline">n</span> 轮游戏后，获胜次数分别为 <span class="math inline">0,1,\dots,n</span> 的概率。</li>
+<li><strong>泊松分布 (Poisson distribution)</strong>：描述单位时间内随机事件发生的次数的概率分布。</li>
+<li><strong>正态分布 (Normal distribution)</strong>：连续的钟形曲线。最常见也是应用最广的分布。</li>
+</ul>
+</section>
+<section id="描述性统计量单一数值描述数据整体的情况" class="level3">
+<h3 class="anchored" data-anchor-id="描述性统计量单一数值描述数据整体的情况">7. 描述性统计量：单一数值描述数据整体的情况。</h3>
+<ul>
+<li><p>中心趋势：数据的“中心”在哪里。</p>
+<ul>
+<li><strong>均值 (Mean)</strong>、<strong>期望值 (Expectation)</strong>：<span class="math inline">\mu=E[X]=\int xp(x)dx</span> 。</li>
+<li><strong>中位数 (Median)</strong>：数据排序后的中间值；CDF等于0.5的位置: <span class="math inline">F(m)=0.5</span> 。</li>
+<li><strong>众数 (Mode)</strong>：数据中出现次数最多的项；PDF的最高点；随机变量最可能的取值。</li>
+</ul></li>
+<li><p>离散程度：数据分散的范围。</p>
+<ul>
+<li><strong>方差 (Variance)</strong>：<span class="math inline">\text{Var}[X]=E[(X-\mu)^2]</span>，数据远离均值的程度。</li>
+<li><strong>标准差 (Standard deviation)</strong>：<span class="math inline">\sigma=\sqrt{\text{Var}[X]}</span>，以数据原本的单位描述远离均值的程度。</li>
+</ul></li>
+<li><p>分布形状：</p>
+<ul>
+<li><strong>偏度 (Skewness)</strong>：描述分布函数偏向某一侧的程度。<span class="math inline">\gamma_1 = E[(\frac {X-\mu} {\sigma})^3]</span> 。</li>
+<li><strong>峰度 (Kurtosis)</strong>：描述分布函数的尖锐程度。<span class="math inline">\text{Kurt}[X]=E[(\frac {X-\mu} {\sigma})^4]</span> 。</li>
+</ul></li>
+</ul>
+</section>
+<section id="随机变量的函数-transformation-of-r.v." class="level3">
+<h3 class="anchored" data-anchor-id="随机变量的函数-transformation-of-r.v.">8. 随机变量的函数 (Transformation of r.v.)</h3>
+<p>比如服从标准正态分布的随机变量其平方服从卡方分布：<span class="math inline">X \sim N(0,1) \implies g(X)=X^2 \sim \chi^2</span> 。</p>
+</section>
+<section id="条件概率-conditional-probability" class="level3">
+<h3 class="anchored" data-anchor-id="条件概率-conditional-probability">9. 条件概率 (Conditional probability)</h3>
+<p><span class="math inline">P(A|B)</span> 描述随机变量<span class="math inline">B</span>是如何影响另一个随机变量<span class="math inline">A</span>的概率的。当两个随机变量相互<strong>独立 (Independent)</strong>时，有 <span class="math inline">P(A|B)=P(A)</span>，<span class="math inline">P(B|A)=P(B)</span> 。</p>
+</section>
+<section id="贝叶斯定理-bayes-theorem" class="level3">
+<h3 class="anchored" data-anchor-id="贝叶斯定理-bayes-theorem">10. 贝叶斯定理 (Bayes’ theorem)</h3>
+<p><span class="math display">P(\text{Event}|\text{Data}) = \frac {P(\text{Data}|\text{Event})P(\text{Event})} {P(\text{Data})}</span></p>
+<p>描述当观察到试验数据 <span class="math inline">\text{Data}</span> 后，我们对事件发生概率的<strong>先验信念 (Prior belief)</strong> 应该如何更新。</p>
+</section>
+<section id="贝叶斯主义-bayesians-vs-频率主义-frequentists" class="level3">
+<h3 class="anchored" data-anchor-id="贝叶斯主义-bayesians-vs-频率主义-frequentists">11. 贝叶斯主义 (Bayesians) vs 频率主义 (Frequentists)</h3>
+<p>它们是统计学中两种主要的推断方法，在解释概率、处理数据和解决问题的方式上有本质区别。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>比较维度</th>
+<th>贝叶斯主义</th>
+<th>频率主义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>概率的定义</td>
+<td>概率是主观信念或对不确定性的度量，反映事件发生的可能性。</td>
+<td>概率是长期频率，即事件在无穷多次重复实验中发生的比例。</td>
+</tr>
+<tr class="even">
+<td>参数的本质</td>
+<td>参数是随机的，具有不确定性，通过概率分布（如先验和后验）进行描述。</td>
+<td>参数是固定的（但未知），没有随机性。所有不确定性来源于数据。</td>
+</tr>
+<tr class="odd">
+<td>数据的作用</td>
+<td>数据用于更新先验分布，结合先验信息和数据得到后验分布。</td>
+<td>数据是唯一的信息来源，不依赖先验信息，参数估计完全基于样本数据。</td>
+</tr>
+<tr class="even">
+<td>推断结果</td>
+<td>推断结果是参数的后验分布，提供参数可能值的全面描述。</td>
+<td>推断结果是点估计（如最大似然估计）或区间估计（如置信区间）。</td>
+</tr>
+<tr class="odd">
+<td>假设检验</td>
+<td>通过后验概率评估假设是否可信，或使用贝叶斯因子比较假设的相对支持度。</td>
+<td>使用 p 值判断零假设是否成立，基于假设成立下数据的极端性来检验假设。</td>
+</tr>
+<tr class="even">
+<td>随机性的来源</td>
+<td>参数和样本数据都具有随机性，随机性体现在参数分布和数据分布中。</td>
+<td>只有样本数据具有随机性，参数是固定的。</td>
+</tr>
+<tr class="odd">
+<td>计算复杂度</td>
+<td>计算复杂，特别是在高维参数空间中，通常需要数值方法（如 MCMC）。</td>
+<td>计算较简单，许多方法有解析解（如最大似然估计）。</td>
+</tr>
+<tr class="even">
+<td>先验信息的作用</td>
+<td>强调结合先验知识和数据，先验分布是推断的起点。</td>
+<td>不使用先验信息，只考虑样本数据，避免主观先验的影响。</td>
+</tr>
+<tr class="odd">
+<td>适用场景</td>
+<td>适合小样本、动态更新、需要结合先验知识的场景，如医学诊断、机器学习、因果推断等。</td>
+<td>适用于大样本、重复实验或没有先验知识的场景，如经典假设检验、实验设计等。</td>
+</tr>
+<tr class="even">
+<td>理论优势</td>
+<td>结果直观，提供参数的完整概率分布，能够动态更新推断结果。</td>
+<td>理论体系成熟，计算快捷，避免主观性，适合重复实验和大样本问题。</td>
+</tr>
+<tr class="odd">
+<td>理论劣势</td>
+<td>依赖先验分布，可能带来主观性；计算复杂，尤其在高维问题中。</td>
+<td>无法量化参数的不确定性，难以处理小样本和动态问题。</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="总体-population" class="level3">
+<h3 class="anchored" data-anchor-id="总体-population">12. 总体 (Population)</h3>
+<p>在统计学中，<strong>总体</strong>指的是研究中感兴趣的一组对象，通常是一群人（特别是在生物统计中）。</p>
+<p>类似于集合，总体中包含的个体通常具有某些共同的特性，这些特性是研究的重点。例如： - 我的产品的用户群 - 糖尿病患者</p>
+<p>研究论文通常会详细定义总体的特征，从而明确总体的范围： - 谁被纳入研究（包含标准）。 - 谁被排除在外（排除标准）。 不同总体的研究结果可能是不可推广的。例如，一个针对特定癌症患者的研究结果可能不能适用于所有癌症患者。</p>
+<p>总体可能非常庞大（如数百万甚至数十亿人），由于时间和资源的限制，通常难以或不可能观察到总体中的每一个个体。由于无法直接研究整个总体，因此需要从总体中<strong>抽样 (Sampling)</strong>进行研究，比如 <strong>样本 (Sample)</strong> <span class="math inline">(x_1,x_2,\dots,x_n)</span>。同时还会假设这些样本是由某种确定分布的随机变量 <span class="math inline">X</span> 生成的，这就是<strong>统计模型 (Statistical model)</strong>。统计学的核心任务就是<strong>根据样本数据推断总体特征</strong>。</p>
+</section>
+<section id="参数-parameter-与-估计量-estimator" class="level3">
+<h3 class="anchored" data-anchor-id="参数-parameter-与-估计量-estimator">13. 参数 (Parameter) 与 估计量 (Estimator)</h3>
+<p>假设全体是所有30-40岁的男性的身高，统计模型为 <span class="math inline">X \sim N(\mu, \sigma^2)</span>。<strong>参数</strong> <span class="math inline">\mu, \sigma^2</span> 可以看作是调节旋钮。原本要描述正态分布要对每个实数定义概率，而统计模型采用函数形式来描述它。只要参数确定，整个函数就确定了。而且统计参数往往带有特殊含义，描述了总体的某种特征。比如本例的参数就是全体身高的平均值和方差。</p>
+<p>估计量是用来从样本数据<strong>推断 (Inference)</strong>总体参数的工具。大多数情况下是没有足够的资源来法观测全体中的每个实例的，所以模型参数是<strong>未知</strong>的。统计学的目标是用<strong>采样数据对未知的总体参数进行估计</strong>。比如根据目前收集到的身高样本 <span class="math inline">(x_1,x_2,\dots,x_n)</span> 计算出<strong>样本均值 (Sample mean)</strong> <span class="math inline">\hat \mu=\frac 1 n \sum_{i=1}^n x_i</span> 和样本方差 <span class="math inline">\hat \sigma^2</span>，分别就是参数 <span class="math inline">\hat \mu, \hat \sigma^2</span> 对应的估计量，也就是对参数的“猜测”或<strong>近似</strong>。一个好的估计量需要满足某些特性，其中最重要的是一致性（Consistency），即当样本量增加时，估计量的值会越来越接近真实的总体参数。如果我们能<strong>采集无限多的数据，估计量的值应该与真实参数完全重合</strong>。若估计量不一致，则不能使用，因为它无法可靠地反映总体参数。样本均值是一个优秀的估计量，因为它是一致的，并且在许多情况下表现良好。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>属性</th>
+<th>统计参数</th>
+<th>估计量</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>对象</td>
+<td>总体（未知）</td>
+<td>样本（已知）</td>
+</tr>
+<tr class="even">
+<td>定义</td>
+<td>描述总体特征的固定数值</td>
+<td>基于样本数据的数学公式或规则</td>
+</tr>
+<tr class="odd">
+<td>是否随机</td>
+<td>固定值（未知，但确定存在）</td>
+<td>随机变量（因样本不同而不同）</td>
+</tr>
+<tr class="even">
+<td>作用</td>
+<td>是估计的目标</td>
+<td>用于推测统计参数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>推断统计学 (Inferential statistics)</strong>研究如何有效的估计参数。它有别于<strong>描述统计学 (Descriptive statistics)</strong>，后者只描述已收集的数据。</p>
+</section>
+<section id="大数定律-law-of-large-numbers" class="level3">
+<h3 class="anchored" data-anchor-id="大数定律-law-of-large-numbers">14. 大数定律 (Law of large numbers)</h3>
+<p>描述当收集大量样本后，样本均值 <span class="math inline">\hat \mu=\frac 1 n \sum_{i=1}^n x_i</span> 跟全体均值产生大偏差的概率会越来越小：</p>
+<p><span class="math display">\lim_{n\to \infty} P(|\hat \mu - \mu| \ge \epsilon) = 0</span></p>
+<p>也记作 <span class="math inline">\hat \mu</span> <strong>依概率收敛 (Converges in probability)</strong>于 <span class="math inline">\mu</span>。</p>
+<p><span class="math display">\hat \mu \xrightarrow{p} \mu</span></p>
+<p>这是一种新的极限概念。</p>
+</section>
+<section id="中心极限定理-central-limit-theorem" class="level3">
+<h3 class="anchored" data-anchor-id="中心极限定理-central-limit-theorem">15. 中心极限定理 (Central limit theorem)</h3>
+<p>由于采样操作具有随机性，所以基于这些样本的<strong>估计量是随机变量</strong>，其分布非常重要，称为<strong>样本分布 (Sampling distribution)</strong>。如果知道样本分布，就可以确定当前估计量的数值是正常的还是罕见的。</p>
+<p>中心极限定理告诉我们，当样本量充分大时，样本均值的一个函数变换<strong>依分布收敛 (Converges in distribution)</strong>于标准正态分布：</p>
+<p><span class="math display">\frac{\sqrt n} \sigma (\hat \mu - \mu) \xrightarrow{d} N(0,1)\;.</span></p>
+</section>
+<section id="渐进理论-asymptotic-theory" class="level3">
+<h3 class="anchored" data-anchor-id="渐进理论-asymptotic-theory">16. 渐进理论 (Asymptotic theory)</h3>
+<p>大数定律和中心极限定理都是渐进理论的例子。这也要求统计时尽可能获得充足的样本。当实在无法获得大量样本时，可以考虑一些其他方法。比如 <strong>Bootstrap</strong> 采样。</p>
+</section>
+<section id="假设检验-hypothesis-tests" class="level3">
+<h3 class="anchored" data-anchor-id="假设检验-hypothesis-tests">17. 假设检验 (Hypothesis tests)</h3>
+<p>统计学家将对总体的信念转化为关于总体参数的两个假设：</p>
+<ul>
+<li>第一个假设是 <strong>零假设 (Null hypothesis)</strong>，记作 <span class="math inline">H_0</span>，表达我们希望推翻的假设，往往跟维持现状有关，比如：
+<ul>
+<li>药物没有疗效</li>
+<li>实验组和对照组没有区别 这也体现了假设检验的严谨性：除非收集到足够证据，否则不能拒绝零假设。</li>
+</ul></li>
+<li>第二个假设是 <strong>备择假设 (Alternative hypothesis)</strong>，记作 <span class="math inline">H_a</span>，是跟零假设相反的假设。</li>
+</ul>
+<p>比如参数 <span class="math inline">\theta</span> 表示实验组和对照组的区别，也是统计模型的参数。 <span class="math inline">H_0: \theta=0</span> 零假设是二者没有区别。然后不断收集样本来计算估计量 <span class="math inline">\hat \theta</span>。<strong><span class="math inline">p</span> 值 (p value)</strong> 就是在 <span class="math inline">H_0</span> 成立的情况下，采样得到当前估计值以及更极端值的概率。如果这个概率足够低则表示 <span class="math inline">H_0</span> 不太可能生成当前样本，可以拒绝 <span class="math inline">H_0</span>。我们也可以通过<strong>置信区间 (Confidence interval)</strong> 来做决策。比如设置区间 <span class="math inline">(\hat \theta - c, \hat \theta + c)</span>，如果 <span class="math inline">\theta=0</span> 不在区间内，我们也可以拒绝 <span class="math inline">H_0</span>。两种方法是等价的。</p>
+<p>当我们做出决策后，可能会发生两类错误：</p>
+<ul>
+<li><strong>第一类错误 (Type-I Error)</strong>: <span class="math inline">H_0</span> 其实是正确的，但我们却错误的拒绝了它。比如我们认为治疗是有效的，但其实是无效的。</li>
+<li><strong>第二类错误 (Type-II Error)</strong>: <span class="math inline">H_0</span> 其实是错误的，但我们没能拒绝掉 <span class="math inline">H_0</span>。比如我们把实际有效的药物当作无效的了。</li>
+</ul>
+<p>理想中，我们应该同时降低这两类错误的概率，但实际中往往降低其中一个就会升高另一个。所以人们会先锁定可以容忍的第一类错误的概率上限，比如不高于 <span class="math inline">1%</span> 。这称作<strong>显著度水平 (Significance level)</strong> 。之后再开始尝试最小化第二类错误。这个过程也称作<strong>最大化检验功效 (Maximizing power)</strong>。</p>
+</section>
+<section id="z-检验-z-test-和-t-检验-t-test" class="level3">
+<h3 class="anchored" data-anchor-id="z-检验-z-test-和-t-检验-t-test">18. z-检验 (z-test) 和 t-检验 (t-test)</h3>
+<p>根据研究问题的不同，假设检验的应用场景也有多种，比如：</p>
+<ul>
+<li><strong>单样本检验 (One-sample test)</strong>：用于检验总体的特征，<span class="math inline">\hat \theta = \bar X</span> 。</li>
+<li><strong>两样本检验 (Two-sample test)</strong>：用于对比两组的差异，<span class="math inline">\hat \theta = \bar X_1 - \bar X_2</span> 。</li>
+</ul>
+<p>z-检验 和 t-检验都可用于单样本检验和两样本检验。如果要比较三组的差异，可以使用<strong>方差分析 (Analysis of variance)</strong> ，简称 ANOVA。比如 <span class="math inline">H_0</span> 是三组的均值都一样，<span class="math inline">H_a</span> 是其中一组的均值是不同的。</p>
+<p>由中心极限定理，大样本下，样本分布将趋于正态分布：<span class="math inline">\bar X \sim N(\mu, \frac {\sigma^2} n), \quad \bar X_1 - \bar X_2 \sim N(\mu_1 - \mu_2, \frac {\sigma_1^2} n - \frac {\sigma_2^2} m)</span> 。</p>
+<p>当我们已知总体的标准差 <span class="math inline">\sigma</span> 时，可以利用这一点进行 <strong>z-检验</strong>（这里的 z 有标准正态分布的含义），检验统计量 <span class="math display">z = \frac {\hat \mu - \mu_0} {\sigma / \sqrt n}</span> 其中 <span class="math inline">n</span> 是样本量，<span class="math inline">\hat \mu</span> 是样本均值，<span class="math inline">\mu_0</span> 是总体均值的假设值。</p>
+<p>如果样本量比较少 (<span class="math inline">n &lt; 30</span>)，或者不知道总体的标准差，则需要使用 <strong>t-检验</strong>，使用样本的标准差 <span class="math inline">s</span> 作为总体标准差的估计。检验统计量 <span class="math display">t = \frac {\hat \mu - \mu_0} {s / \sqrt n}</span> <span class="math inline">t</span> 服从自由度为 <span class="math inline">n-1</span> 的 <strong>t 分布</strong>。当样本量较小时，t 分布比标准正态分布具有更重的尾部（即更高的极端值概率）。随着样本量的增加，t 分布逐渐逼近标准正态分布。</p>
+<p>z-检验 和 t-检验都是针对连续型数据的。对于二元数据，且样本量较小时，可以使用<strong>列联表 (Contingency table)</strong>，并进行<strong>卡方检验 (<span class="math inline">\chi^2</span> test)</strong> 。</p>
+</section>
+<section id="回归-regression" class="level3">
+<h3 class="anchored" data-anchor-id="回归-regression">19. 回归 (Regression)</h3>
+<p>z-检验 和 t-检验之类的假设检验都是<strong>单变量分析 (Univariate analysis)</strong>，因为他们都聚焦于单个随机变量。如果要分析随机变量之间的关联，比如 <span class="math inline">Y=f(X)</span>，就需要回归。</p>
+<p><strong>线性回归 (Linear regression)</strong>： <span class="math inline">Y=\beta_1 + \beta_2 X + \epsilon</span> 让我们可以分析一个随机变量是如何影响另一个的。</p>
+<p><strong>广义线性回归 (Generalized linear regression)</strong>: <span class="math inline">g(Y)=\beta_0+\beta_1 X</span> 。线性回归只能处理连续型的输入，对于二元或计数类的数据，就需要用广义线性回归。</p>
+<p>为了对回归方程中的参数进行估计：<span class="math inline">\hat \beta_0, \hat \beta_1, \hat \epsilon(\hat \sigma^2)</span> ，我们需要用到 <strong>最大似然估计 (Maximum likelihood estimation)</strong> <span class="math inline">\hat \theta_\text{MLE}</span> 或者其他<strong>最优化算法 (Optimization algorithm)</strong> 。</p>
+<p>如果要了解随机变量随时间的变化，就需要对同一组对象在不同时刻采集数据。此时收集到的样本就不是 <strong>独立同分布 (Independent, Identically distributed)</strong> 的。这时应使用 <strong>纵向建模 (Longitudinal modeling)</strong>，比如 <strong>GEE model</strong>:</p>
+<p><span class="math display">U(\beta) = \sum_{i=1}^n \frac {\partial \mu_i} {\partial \beta} V_i^{-1}(Y_i - \mu_i(\beta))</span></p>
+<p>或 <strong>混合效应模型 (Mixed-effects model)</strong>:</p>
+<p><span class="math display">g(Y_i) = \beta_0 + \beta_1 X + (b_0 + b_1 X)</span></p>
+<p>有时我们还希望在模型中包含多个预测因子：<span class="math inline">g(Y) = \beta_0+\beta_1 X_1 + \beta_2 X_2</span>，那么就牵扯到<strong>变量选择 (Variable selection)</strong>，这可以咨询专家或者研究过去的数据来做选择。另一个经验法则是分析 <strong>干扰因素 (Confounders)</strong>，表示如果不计入某个变量，那么基于输入的预测将会被破坏。</p>
+</section>
+<section id="随机对照实验-randomized-controlled-trial" class="level3">
+<h3 class="anchored" data-anchor-id="随机对照实验-randomized-controlled-trial">20. 随机对照实验 (Randomized controlled trial)</h3>
+<p>数据的采集方式非常重要。使用随机对照实验获得的数据来分析，其结果可以被认为是有因果关系的，而不只是相关性关系，所以统计学家非常重视<strong>实验设计 (Experimental design)</strong>，这样我们才能准确的知道可以得出什么结论。</p>
+</section>
+<section id="非参数统计-nonparametric-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="非参数统计-nonparametric-statistics">21. 非参数统计 (Nonparametric statistics)</h3>
+<p>在统计学中，必须始终牢记我们的假设，模型本身就是一种假设，假设了随机变量关联的形式。前面提到的模型中都包含参数，统称<strong>参数统计 (parametric statistics)</strong>。如果不想提前假设函数形式，而是直接估计整个函数 <span class="math inline">Y=f(X)</span>，就可以使用非参数统计。比如 <strong>Mann-Whitney test</strong> 就是双样本 t-检验的非参数形式。</p>
+<p>还有<strong>半参数统计 (Semiparametric statistics)</strong>，比较有名气的是 <strong>Cox model</strong>： <span class="math inline">\lambda(t | X)= \lambda_0(t) \exp(\beta_1 X_1)</span>，用于<strong>生存分析 (Survival analysis)</strong>。此模型的 <span class="math inline">\exp</span> 部分是参数化的，描述生存率如何随治疗而变化，而 <span class="math inline">\lambda_0</span> 则是非参数的整个函数，成为<strong>风险函数 (Hazard function)</strong>。</p>
+</section>
+<section id="预测-prediction" class="level3">
+<h3 class="anchored" data-anchor-id="预测-prediction">22. 预测 (Prediction)</h3>
+<p>统计学的目标不只有描述和推断，还希望可以预测未来。相关的工具有<strong>机器学习 (Machine learning)</strong>，使用<strong>黑箱模型 (Black box models)</strong> 进行预测。在建模时，传统的假设是参数量远小于数据量，但在一些场合，会遇到参数量比数据量还大的情况，这就需要<strong>高维统计学 (High-dimensional statistics)</strong>。</p>
+</section>
+<section id="因果推断-causal-inference" class="level3">
+<h3 class="anchored" data-anchor-id="因果推断-causal-inference">23. 因果推断 (Causal inference)</h3>
+<p>一种让人们从观察的数据中做出因果陈述的技术。关键思想是<strong>反事实框架 (Counterfactual framework)</strong>。</p>
+</section>
+<section id="健壮统计-robust-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="健壮统计-robust-statistics">24. 健壮统计 (Robust statistics)</h3>
+<p>统计往往依赖与假设，如果假设不成立，那么统计结论也就无效了。一些研究者开发了健壮统计技术，使得即使假设是错误的，也能做出正确的推理，称作<strong>假设松弛 (Assumption relaxation)</strong>。</p>
+<hr>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">脚注</h2>
+
+<ol>
+<li id="fn1"><p><a href="https://www.youtube.com/watch?v=UhJ_F4uovgE">100+ Statistics Concepts You Should Know</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "已复制");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "已复制");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
