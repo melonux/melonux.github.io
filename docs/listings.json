@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/How to write math/index.html",
       "/posts/Statistics Concepts You Should Know/index.html",
       "/posts/0.999...=1/index.html",
       "/posts/univariate_distribution_relationships/index.html",

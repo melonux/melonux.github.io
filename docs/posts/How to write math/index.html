@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Shen Lei">
 
-<title>日积月累 – blog</title>
+<title>[摘要] How to write mathematics – blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +24,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f3c2ea88cadbcfb37ba28ffa2c97cfc1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-ae2d0dcda2edce4ab590422bb373b64f.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f3c2ea88cadbcfb37ba28ffa2c97cfc1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-ae2d0dcda2edce4ab590422bb373b64f.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -57,51 +56,36 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
   </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -130,28 +114,28 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">blog</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="展开或折叠导航栏" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -167,256 +151,224 @@ window.Quarto = {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="切换深色模式"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">日积月累</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">[摘要] How to write mathematics</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Math</div>
+                <div class="quarto-category">Writing skill</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">作者</div>
+      <div class="quarto-title-meta-contents">
+               <p>Shen Lei </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">发布于</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">2025年5月26日</p>
+      </div>
+    </div>
     
       
     </div>
     
+  <div>
+    <div class="abstract">
+      <div class="block-title">摘要</div>
+      <p>我将保罗·哈尔莫斯 (Paul R. Halmos) 文中提到的写作注意事项提炼为一系列明确的条款，并补充具体的正反面示例，以便快速掌握和应用。</p>
+    </div>
+  </div>
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(6)</span></div><div class="category" data-category="TWF0aA==">Math <span class="quarto-category-count">(2)</span></div><div class="category" data-category="TWF0aGVtYXRpY3M=">Mathematics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHJvYmFiaWxpdHk=">Probability <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHJvYmFiaWxpdHklMjB0aGVvcnk=">Probability theory <span class="quarto-category-count">(3)</span></div><div class="category" data-category="V3JpdGluZyUyMHNraWxs">Writing skill <span class="quarto-category-count">(1)</span></div></div></div>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<section id="引言" class="level1">
+<h1>引言</h1>
+<p>著名数学家 Paul R. Halmos 撰写的《How to write mathematics》是一篇极具洞察力和实践指导意义的文章。它不仅为数学领域的写作者提供了宝贵的建议，其核心思想也适用于任何需要清晰、严谨和有效沟通的写作领域。</p>
+</section>
+<section id="一-战略与规划-big-picture-strategy" class="level1">
+<h1>一、 战略与规划 (Big Picture Strategy)</h1>
+<p>在动笔之前，必须明确写作的宏观方向。</p>
+<ul>
+<li><p><strong>条款1：确保主题单一且明确。 </strong></p>
+<ul>
+<li><p><strong>说明</strong>： 一篇文章只能有一个核心思想。 避免内容空洞或试图在一篇文章里塞进太多不相干的主题。</p></li>
+<li><p><strong>错误示例</strong> ❌： 写一本叫《微积分》的书，因为它实际上是逻辑、几何、分析、代数等多个主题的混合体，难以写好。</p></li>
+<li><p><strong>正确示例</strong> ✅： 写一篇论文，证明“有界调和函数必为常数”，主题清晰、聚焦。 或者写一本书，专门探讨“度量空间中的紧集理论”。</p></li>
+</ul></li>
+<li><p><strong>条款2：为具体的读者而写。 </strong></p>
+<ul>
+<li><p><strong>说明</strong>： 在脑海中锁定一个清晰的读者画像（例如，一位刚学完某门课程的学生），并时刻站在他的角度思考，预判他可能遇到的困难并加以解决。</p></li>
+<li><p><strong>错误示例</strong> ❌： “本文适合所有对拓扑学感兴趣的读者。”（过于宽泛，无法提供有效指导）</p></li>
+<li><p><strong>正确示例</strong> ✅： “我的目标读者是一位刚学完点集拓扑，正要开始学习代数拓扑的研究生。他可能对‘同伦’的直观概念很模糊，所以我会用大量图形和形变的例子来引入，然后再给出严格定义。”</p></li>
+</ul></li>
+<li><p><strong>条款3：先组织，再动笔。 </strong></p>
+<ul>
+<li><p><strong>说明</strong>： 写作的核心贡献在于组织材料。 围绕核心的、关键的示例和反例来构建你的文章结构，而不是简单地罗列定义和定理。 逻辑结构比线性顺序更重要。</p></li>
+<li><p><strong>错误示例</strong> ❌： 按照“定义-定理-证明”的枯燥顺序线性罗列所有知识点。</p></li>
+<li><p><strong>正确示例</strong> ✅： 在介绍“群”的概念时，不直接下定义，而是先从“正方形的对称性”这个核心例子出发，引出变换、封闭性、单位元、逆等概念，最后再提炼出抽象的群公理。</p></li>
+</ul></li>
+<li><p><strong>条款4：提前规划符号系统。 </strong></p>
+<ul>
+<li><p><strong>说明</strong>： 在写作初期就设计好全文的符号，保持一致性与和谐感，避免临时起意导致混乱。</p></li>
+<li><p><strong>错误示例</strong> ❌： 在一句话中，用 <span class="math inline">\epsilon</span> 表示一个小数，在下一段又用它表示集合的“属于”关系（<span class="math inline">\in</span>）。 或者，写出 <span class="math inline">a x_1 + b x_2</span> 这种索引和字母不协调的表达式。</p></li>
+<li><p><strong>正确示例</strong> ✅： 事先规定：小写希腊字母 <span class="math inline">α,β,γ</span> 代表标量；大写字母 <span class="math inline">A,B,C</span> 代表矩阵；草书体 <span class="math inline">\mathcal{F},\mathcal{G}</span> 代表函数集合。并在全文中严格遵守。</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="二-写作与修改流程-writing-revision-process" class="level1">
+<h1>二、 写作与修改流程 (Writing &amp; Revision Process)</h1>
+<p>写作是一个动态的、持续改进的过程。</p>
+<ul>
+<li><p><strong>条款5：采用螺旋式写作。</strong></p>
+<ul>
+<li><p><strong>说明</strong>： 写作并非线性过程。写完后续章节后，要根据新的理解和需要，回头重写前面的章节。 这是一个不断迭代、完善的过程。</p></li>
+<li><p><strong>示例</strong> ✅： 写完第三章“线性变换”后，发现第一章“向量空间”的例子（如多项式空间）不够充分，无法很好地展示“核”与“像”的概念。因此，回到第一章，增加或修改例子，使其能更好地服务于第三章的内容。</p></li>
+</ul></li>
+<li><p><strong>条款6：重写，而非编辑。 </strong></p>
+<ul>
+<li><p><strong>说明</strong>： 当草稿需要大改时，不要在原文上用红笔涂涂改改。 最有效的方法是把每个字都重新写一遍，这能迫使你摆脱对原有文字的路径依赖，做出更彻底的改进。</p></li>
+<li><p><strong>错误示例</strong> ❌： 在打印出的草稿上画箭头、删改词语、在页边空白处添加大段文字。</p></li>
+<li><p><strong>正确示例</strong> ✅： 打开一个空白文档，参照草稿的思路和内容，用全新的句子和结构重新将思想表达一遍。</p></li>
+</ul></li>
+<li><p><strong>条款7：坚持每日写作并“启动水泵”。 </strong></p>
+<ul>
+<li><p><strong>说明</strong>： 成功的关键在于每天持续不断地写一点。 为了克服第二天的写作惰性，在每天收工前，为第二天的工作做好准备，比如写下第二天的第一个句子或定好下一节的标题。</p></li>
+<li><p><strong>示例</strong> ✅： 今天写完了“紧集”的定义和性质。在停止工作前，我写下“下一节：有限覆盖引理”这个标题，并写下第一句话：“为了证明紧集上的连续函数必有界，我们首先需要一个强大的工具，即有限覆盖引理。”</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="三-数学内容的呈现-presenting-mathematical-content" class="level1">
+<h1>三、 数学内容的呈现 (Presenting Mathematical Content)</h1>
+<p>如何清晰、诚实地表达数学思想。</p>
+<ul>
+<li><p><strong>条款8：先陈述定理，再进行证明。 </strong></p>
+<ul>
+<li><p><strong>说明</strong>： 不要长篇大论之后，突然说“因此我们证明了……”。 应该先把定理的陈述（包括所有假设和结论）清晰地展示出来，让读者知道目标是什么，然后再开始证明。</p></li>
+<li><p><strong>错误示例</strong> ❌： “考虑一个函数 <span class="math inline">f</span>…… 它在闭区间 <span class="math inline">[a,b</span>] 上连续……取任意 <span class="math inline">\epsilon&gt;0</span> ……经过一系列推导……我们发现 <span class="math inline">f</span> 在该区间上一致连续。因此我们证明了 <strong>定理3.1</strong>……”</p></li>
+<li><p><strong>正确示例</strong> ✅： “<strong>定理3.1 (Heine-Cantor 定理)</strong>: 若函数 <span class="math inline">f</span> 在闭区间 <span class="math inline">[a,b]</span> 上连续，则 <span class="math inline">f</span> 在该区间上一致连续。 证明：……”</p></li>
+</ul></li>
+<li><p><strong>条款9：保持陈述的纯粹性，剔除无关信息。 </strong></p>
+<ul>
+<li><p><strong>说明</strong>： 在定理或定义的陈述中，不要加入多余的、不必要的假设或解释性语句。</p></li>
+<li><p><strong>错误示例</strong> ❌： “定理： 对于一个交换半单环 <span class="math inline">R</span>（不失一般性，我们可以假设它有单位元），对任意 <span class="math inline">x,y \in R</span>，我们有 <span class="math inline">x^2-y^2=(x−y)(x+y)</span>。”（交换性是必要的，但半单和单位元是不必要的假设，会误导读者 ）。</p></li>
+<li><p><strong>正确示例</strong> ✅： “命题： 在任意交换环中，对任意元素 <span class="math inline">x,y</span> ，都有 <span class="math inline">x^2-y^2=(x-y)(x+y)</span> 。”</p></li>
+</ul></li>
+<li><p><strong>条款10：诚实地对待“显而易见”。 </strong></p>
+<ul>
+<li><p><strong>说明</strong>： 使用“显然”、“易证”等词语时，必须确保它对目标读者来说确实如此，并且你自己能在几个月后依然觉得它显然。 更重要的是，确保它是对的。 如果一个结论没有给出证明，要向读者坦白它的状态（例如，“其证明超出了本书范围，读者可参考文献[X]”）。</p></li>
+<li><p><strong>错误示例</strong> ❌： “由引理1，显然可得 <span class="math inline">p</span> 蕴含 <span class="math inline">q</span>。”（实际上中间需要三步不那么明显的推导，作者因为自己熟悉就跳过了）。</p></li>
+<li><p><strong>正确示例</strong> ✅： “结合引理1和简单的代数运算，我们可以直接验证 <span class="math inline">p</span> 蕴含 <span class="math inline">q</span>。我们将这个验证过程留给感兴趣的读者作为练习。”</p></li>
+</ul></li>
+<li><p><strong>条款11：不要重复证明，应提炼引理。 </strong></p>
+<ul>
+<li><p><strong>说明</strong>： 如果在证明定理2时，发现很多步骤和定理1的证明“几乎一样”，这强烈暗示着背后有一个更根本的、共同的引理。 你应该花时间找到这个引理，单独证明它，然后用它来简化两个定理的证明。</p></li>
+<li><p><strong>错误示例</strong> ❌： 证明定理2时写道：“这里的步骤与定理1的证明完全类似，故略。”</p></li>
+<li><p><strong>正确示例</strong> ✅： “<strong>引理A</strong>： [陈述引理]。证明： [证明引理]。 <strong>定理1</strong>的证明： 由<strong>引理A</strong>，可得…… <strong>定理2</strong>的证明： 由<strong>引理A</strong>，亦可得……”</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="四-语言与风格-language-and-style" class="level1">
+<h1>四、 语言与风格 (Language and Style)</h1>
+<p>文字本身是传达思想的工具，必须打磨。</p>
+<ul>
+<li><p><strong>条款12：永远不要使用“any”。 </strong></p>
+<ul>
+<li><p><strong>说明</strong>： 在数学语境中，“any”一词极其模糊，可以表示“任意一个”（全称量词 <span class="math inline">\forall</span>）或“存在一个”（存在量词 <span class="math inline">\exist</span>）。 为避免歧义，请用“each”、“every”或“all”代替全称量词，或用“some”或“there exists”表达存在。</p></li>
+<li><p><strong>错误示例</strong> ❌： “Prove that any complex number is a product of…”</p></li>
+<li><p><strong>正确示例</strong> ✅： “Prove that <strong>every</strong> complex number is a product of…” 或 “Show that for <strong>each</strong> complex number z, …”</p></li>
+</ul></li>
+<li><p><strong>条款13：精确使用技术术语。 </strong></p>
+<ul>
+<li><p><strong>说明</strong>： 尊重数学术语的严格定义。 例如，区分“函数”和“函数值”，“序列”和“可数集”。</p></li>
+<li><p><strong>错误示例</strong> ❌： “函数 <span class="math inline">x^2+1</span> 是一个偶函数。” ，“可测集序列的并集是可测的。”</p></li>
+<li><p><strong>正确示例</strong> ✅： “由 <span class="math inline">f(x)=x^2 +1</span> 定义的函数 <span class="math inline">f</span> 是一个偶函数。” “一个可数族可测集的并集是可测的。”</p></li>
+</ul></li>
+<li><p><strong>条款14：克制地、有意义地使用“我们(we)”。 </strong></p>
+<ul>
+<li><p><strong>说明</strong>： “我们”应该指“作者和读者”这个共同体。 用于引导读者进行共同的逻辑推理。不要用它来指代作者自己（单数）或表达与读者无关的个人事务。</p></li>
+<li><p><strong>错误示例</strong> ❌： “我们 (其实是我) 在1998年发现了这个定理。” “我们感谢我们的妻子……”</p></li>
+<li><p><strong>正确示例</strong> ✅： “利用引理2，<strong>我们</strong>现在可以证明定理3。”</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="五-符号与版面-symbols-and-layout" class="level1">
+<h1>五、 符号与版面 (Symbols and Layout)</h1>
+<p>符号和页面外观是无声的语言。</p>
+<ul>
+<li><p><strong>条款15：抵制不必要的符号和字母。 </strong></p>
+<ul>
+<li><p><strong>说明</strong>： 能用文字说清楚的，就不要引入符号。 不要使用只出现一次，没有实际贡献的“一次性”字母。</p></li>
+<li><p><strong>错误示例</strong> ❌： “在紧空间上，每个实值连续函数 <span class="math inline">f</span> 都是有界的。” (这里的 <span class="math inline">f</span> 是不必要的，它没有在别处被引用)。</p></li>
+<li><p><strong>正确示例</strong> ✅： “在紧空间上，所有实值连续函数都是有界的。”</p></li>
+</ul></li>
+<li><p><strong>条款16：永远不要用符号开始一个句子。 </strong></p>
+<ul>
+<li><p><strong>说明</strong>： 这会使标点符号（尤其是句号）被过度使用，容易让读者忽略句子的分隔，造成阅读困难。</p></li>
+<li><p><strong>错误示例</strong> ❌： “<span class="math inline">X</span> is a compact set. <span class="math inline">X</span> has the Heine-Borel property.”</p></li>
+<li><p><strong>正确示例</strong> ✅： “The set <span class="math inline">X</span> is compact. It follows that <span class="math inline">X</span> has the Heine-Borel property.”</p></li>
+</ul></li>
+<li><p><strong>条款17：像标点普通句子一样标点数学表达式。 </strong></p>
+<ul>
+<li><p><strong>说明</strong>： 一个数学公式或不等式在句子中扮演着一个子句的角色，因此它的前后需要正确的标点符号。</p></li>
+<li><p><strong>错误示例</strong> ❌： “We see that <span class="math inline">x&gt;0</span> therefore the function is positive.”</p></li>
+<li><p><strong>正确示例</strong> ✅： “We see that <span class="math inline">x&gt;0</span>, and therefore the function is positive.”</p></li>
+</ul></li>
+<li><p><strong>条款18：明智地使用布局和展示。 </strong></p>
+<ul>
+<li><strong>说明</strong>： 避免整页都是密集的文字（令人生畏）或满篇都是符号（让人害怕）。 适当地将关键公式、定义或定理独立成行并编号，以打散文本，帮助读者抓住重点。 但不要给无关紧要的公式编号。</li>
+</ul></li>
+</ul>
+</section>
+<section id="六-最终阶段-finishing-touches" class="level1">
+<h1>六、 最终阶段 (Finishing Touches)</h1>
+<p>写作的最后环节同样重要。</p>
+<ul>
+<li><p><strong>条款19：坚决捍卫你的数学表达。 </strong></p>
+<ul>
+<li><p><strong>说明</strong>： 你必须准备好与编辑或校对员沟通。 如果他们为了遵循通用的、非数学的风格规则而要修改你的精确数学表达，导致含义错误或模糊，你必须坚持己见。</p></li>
+<li><p><strong>示例</strong> ✅： 一位编辑将你的“measure-preserving transformation”（保测变换）改成了“nonmeasure preserving transformation”，这在数学上是无稽之谈。你必须坚决将其改回。</p></li>
+</ul></li>
+<li><p><strong>条款20：学会停止。 </strong></p>
+<ul>
+<li><p><strong>说明</strong>： 写作永远没有完美的终点。 总会有可以改进的地方。 在完成所有你能想到的内容、检查和校对、并让文稿“沉淀”一段时间后，就必须果断地停下来。</p></li>
+<li><p><strong>行动指南</strong> ✅： 完成草稿 <span class="math inline">\rightarrow</span> 校对计算 <span class="math inline">\rightarrow</span> 放置数月使其“成熟” <span class="math inline">\rightarrow</span> 最后通读一遍 <span class="math inline">\rightarrow</span> 停止并提交。</p></li>
+</ul></li>
+</ul>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="TWF0aCUyQ1dyaXRpbmclMjBza2lsbA==" data-listing-date-sort="1748188800000" data-listing-file-modified-sort="1748226459552" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="560">
-<div class="thumbnail">
-<p><a href="./posts/How to write math/index.html" class="no-external"></a></p><a href="./posts/How to write math/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/How to write math/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/How to write math/index.html" class="no-external">[摘要] How to write mathematics</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/How to write math/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('TWF0aA=='); return false;">
-Math
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('V3JpdGluZyUyMHNraWxs'); return false;">
-Writing skill
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/How to write math/index.html" class="no-external">我将保罗·哈尔莫斯 (Paul R. Halmos) 文中提到的写作注意事项提炼为一系列明确的条款，并补充具体的正反面示例，以便快速掌握和应用。 </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/How to write math/index.html" class="no-external">
-<div class="listing-date">
-May 26, 2025
-</div>
-<div class="listing-author">
-Shen Lei
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="TWF0aCUyQ1Byb2JhYmlsaXR5" data-listing-date-sort="1742400000000" data-listing-file-modified-sort="1743669257796" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="744">
-<div class="thumbnail">
-<p><a href="./posts/Statistics Concepts You Should Know/index.html" class="no-external"></a></p><a href="./posts/Statistics Concepts You Should Know/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/Statistics Concepts You Should Know/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Statistics Concepts You Should Know/index.html" class="no-external">你应该知道的统计学概念</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Statistics Concepts You Should Know/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('TWF0aA=='); return false;">
-Math
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('UHJvYmFiaWxpdHk='); return false;">
-Probability
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/Statistics Concepts You Should Know/index.html" class="no-external">罗列一些重要的统计学概念，简述概念的含义与用法，作为日后参考使用。 </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/Statistics Concepts You Should Know/index.html" class="no-external">
-<div class="listing-date">
-Mar 20, 2025
-</div>
-<div class="listing-author">
-Shen Lei
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="TWF0aGVtYXRpY3M=" data-listing-date-sort="1687968000000" data-listing-file-modified-sort="1701335890000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="356">
-<div class="thumbnail">
-<p><a href="./posts/0.999...=1/index.html" class="no-external"></a></p><a href="./posts/0.999...=1/index.html" class="no-external">
-<p class="card-img-top"><img src="posts\0.999...=1\p1.jpg"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/0.999...=1/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/0.999...=1/index.html" class="no-external">0.999…=1</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/0.999...=1/index.html" class="no-external">来自孩子的提问</a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('TWF0aGVtYXRpY3M='); return false;">
-Mathematics
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/0.999...=1/index.html" class="no-external">从多个角度解释等式成立的原因 </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/0.999...=1/index.html" class="no-external">
-<div class="listing-date">
-Jun 29, 2023
-</div>
-<div class="listing-author">
-Shen Lei
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="UHJvYmFiaWxpdHklMjB0aGVvcnk=" data-listing-date-sort="1687968000000" data-listing-file-modified-sort="1697383024000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3541">
-<div class="thumbnail">
-<p><a href="./posts/univariate_distribution_relationships/index.html" class="no-external"></a></p><a href="./posts/univariate_distribution_relationships/index.html" class="no-external">
-<p class="card-img-top"><img src="posts\univariate_distribution_relationships\relation.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/univariate_distribution_relationships/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/univariate_distribution_relationships/index.html" class="no-external">[译注] 单变量概率分布之间的关系</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/univariate_distribution_relationships/index.html" class="no-external">原文链接: </a><a href="2008amstat.pdf">Univariate Distribution Relationships</a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('UHJvYmFiaWxpdHklMjB0aGVvcnk='); return false;">
-Probability theory
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/univariate_distribution_relationships/index.html" class="no-external">各种概率分布并非孤立，而是紧密关联在一起的。本文基于原论文，总结了单变量概率分布的属性，同时对大部分的关联给出了详细的证明步骤。 </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/univariate_distribution_relationships/index.html" class="no-external">
-<div class="listing-date">
-Jun 29, 2023
-</div>
-<div class="listing-author">
-Shen Lei
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="UHJvYmFiaWxpdHklMjB0aGVvcnk=" data-listing-date-sort="1679760000000" data-listing-file-modified-sort="1680257700000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="183">
-<div class="thumbnail">
-<p><a href="./posts/beta_distribution/index.html" class="no-external"></a></p><a href="./posts/beta_distribution/index.html" class="no-external">
-<p class="card-img-top"><img src="posts\beta_distribution\p1.svg"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/beta_distribution/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/beta_distribution/index.html" class="no-external">Beta distribution</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/beta_distribution/index.html" class="no-external">直观解释</a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('UHJvYmFiaWxpdHklMjB0aGVvcnk='); return false;">
-Probability theory
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/beta_distribution/index.html" class="no-external">Beta分布用于描述二项分布 <span class="math inline">\(\text{Binomial}(x; n,p)\)</span> 中参数 <span class="math inline">\(p\)</span> 的 <strong>不确定性</strong>，即 <span class="math inline">\(p\)</span> 在不同取值下的可能性。 </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/beta_distribution/index.html" class="no-external">
-<div class="listing-date">
-Mar 26, 2023
-</div>
-<div class="listing-author">
-Shen Lei
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="UHJvYmFiaWxpdHklMjB0aGVvcnk=" data-listing-date-sort="1679760000000" data-listing-file-modified-sort="1680277328000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="304">
-<div class="thumbnail">
-<p><a href="./posts/dirichlet_distribution/index.html" class="no-external"></a></p><a href="./posts/dirichlet_distribution/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/dirichlet_distribution/222.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/dirichlet_distribution/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/dirichlet_distribution/index.html" class="no-external">Dirichlet distribution</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/dirichlet_distribution/index.html" class="no-external">直观解释</a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('UHJvYmFiaWxpdHklMjB0aGVvcnk='); return false;">
-Probability theory
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/dirichlet_distribution/index.html" class="no-external">Dirichlet分布用于描述 <span class="math inline">\(\text{Multinomial}(\vec x; n,\vec p)\)</span> 中参数 <span class="math inline">\(\vec p\)</span> 的 <strong>不确定性</strong>，即 <span class="math inline">\(\vec p\)</span> 在不同取值下的可能性。 </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/dirichlet_distribution/index.html" class="no-external">
-<div class="listing-date">
-Mar 26, 2023
-</div>
-<div class="listing-author">
-Shen Lei
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -604,12 +556,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "已复制");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "已复制");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
