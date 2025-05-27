@@ -233,14 +233,15 @@ window.Quarto = {
 </ul></li>
 <li><p><strong>条款3：先组织，再动笔。 </strong></p>
 <ul>
-<li><p><strong>说明</strong>： 写作的核心贡献在于组织材料。 围绕核心的、关键的示例和反例来构建你的文章结构，而不是简单地罗列定义和定理。 逻辑结构比线性顺序更重要。</p></li>
+<li><p><strong>说明</strong>： 写作的核心贡献在于组织材料。 围绕核心的、关键的示例和反例来构建你的文章结构，而不是简单地罗列定义和定理。 逻辑结构比线性顺序更重要。 以最小化读者的阻力，最大化他们的洞察力，并让他们在正确的轨道上，不受任何无意的干扰 。这才是一本书相比于一堆论文的优势。</p></li>
 <li><p><strong>错误示例</strong> ❌： 按照“定义-定理-证明”的枯燥顺序线性罗列所有知识点。</p></li>
 <li><p><strong>正确示例</strong> ✅： 在介绍“群”的概念时，不直接下定义，而是先从“正方形的对称性”这个核心例子出发，引出变换、封闭性、单位元、逆等概念，最后再提炼出抽象的群公理。</p></li>
+<li><p><strong>正确示例</strong> ✅： 准备一份大纲可能需要数年，至少是很多周。当有想法时，把它们记在活页纸上。这里的“想法”可能是一个符号的选择；可能是一个证明，一个贴切的描述性词语，或者一句俏皮话。将来写作时，用这些纸片玩“单人纸牌”游戏对准备大纲大有裨益 。</p></li>
 </ul></li>
 <li><p><strong>条款4：提前规划符号系统。 </strong></p>
 <ul>
 <li><p><strong>说明</strong>： 在写作初期就设计好全文的符号，保持一致性与和谐感，避免临时起意导致混乱。</p></li>
-<li><p><strong>错误示例</strong> ❌： 在一句话中，用 <span class="math inline">\epsilon</span> 表示一个小数，在下一段又用它表示集合的“属于”关系（<span class="math inline">\in</span>）。 或者，写出 <span class="math inline">a x_1 + b x_2</span> 这种索引和字母不协调的表达式。</p></li>
+<li><p><strong>错误示例</strong> ❌： 在一句话中，用 <span class="math inline">\epsilon</span> 表示一个小数，在下一段又用它表示集合的“属于”关系（<span class="math inline">\in</span>）。 或者，写出 <span class="math inline">a x_1 + b x_2</span> 这种索引和字母不协调的表达式。 或者 <span class="math inline">\sum_{\sigma \in \Sigma} a_\sigma</span>。</p></li>
 <li><p><strong>正确示例</strong> ✅： 事先规定：小写希腊字母 <span class="math inline">α,β,γ</span> 代表标量；大写字母 <span class="math inline">A,B,C</span> 代表矩阵；草书体 <span class="math inline">\mathcal{F},\mathcal{G}</span> 代表函数集合。并在全文中严格遵守。</p></li>
 </ul></li>
 </ul>
@@ -251,7 +252,7 @@ window.Quarto = {
 <ul>
 <li><p><strong>条款5：采用螺旋式写作。</strong></p>
 <ul>
-<li><p><strong>说明</strong>： 写作并非线性过程。写完后续章节后，要根据新的理解和需要，回头重写前面的章节。 这是一个不断迭代、完善的过程。</p></li>
+<li><p><strong>说明</strong>： 写作并非线性过程。写完后续章节后，要根据新的理解和需要，回头重写前面的章节。 这是一个不断迭代、完善的过程。 章节的写作和重写顺序大致是 1, 2, 1, 2, 3, 1, 2, 3, 4。每章一般会重写3-4次。要有效利用副线情节和线索，比正式定义早几章首次提及，然后随着正式处理的临近，一次又一次地被重提，每次都带有更多细节。这样的程序可以极大地帮助读者，同时，也使作者的正式工作变得更加容易。其代价是大大增加了写作难度 。这是值得的。<strong>如果你工作八个小时来节省读者五分钟的时间，那么每一千名读者你就能节省超过80个人时，你的名字将在许多数学大楼的走廊里被理所应当地祝福。</strong></p></li>
 <li><p><strong>示例</strong> ✅： 写完第三章“线性变换”后，发现第一章“向量空间”的例子（如多项式空间）不够充分，无法很好地展示“核”与“像”的概念。因此，回到第一章，增加或修改例子，使其能更好地服务于第三章的内容。</p></li>
 </ul></li>
 <li><p><strong>条款6：重写，而非编辑。 </strong></p>
@@ -275,6 +276,7 @@ window.Quarto = {
 <ul>
 <li><p><strong>说明</strong>： 不要长篇大论之后，突然说“因此我们证明了……”。 应该先把定理的陈述（包括所有假设和结论）清晰地展示出来，让读者知道目标是什么，然后再开始证明。</p></li>
 <li><p><strong>错误示例</strong> ❌： “考虑一个函数 <span class="math inline">f</span>…… 它在闭区间 <span class="math inline">[a,b</span>] 上连续……取任意 <span class="math inline">\epsilon&gt;0</span> ……经过一系列推导……我们发现 <span class="math inline">f</span> 在该区间上一致连续。因此我们证明了 <strong>定理3.1</strong>……”</p></li>
+<li><p><strong>错误示例</strong> ❌： “给定 <span class="math inline">\epsilon</span>，令 <span class="math inline">\delta = \big(\frac \epsilon {3N^2+2}\big)^{1/2}</span>”。正向的证明才更容易被掌握。</p></li>
 <li><p><strong>正确示例</strong> ✅： “<strong>定理3.1 (Heine-Cantor 定理)</strong>: 若函数 <span class="math inline">f</span> 在闭区间 <span class="math inline">[a,b]</span> 上连续，则 <span class="math inline">f</span> 在该区间上一致连续。 证明：……”</p></li>
 </ul></li>
 <li><p><strong>条款9：保持陈述的纯粹性，剔除无关信息。 </strong></p>
@@ -312,6 +314,7 @@ window.Quarto = {
 <li><p><strong>说明</strong>： 尊重数学术语的严格定义。 例如，区分“函数”和“函数值”，“序列”和“可数集”。</p></li>
 <li><p><strong>错误示例</strong> ❌： “函数 <span class="math inline">x^2+1</span> 是一个偶函数。” ，“可测集序列的并集是可测的。”</p></li>
 <li><p><strong>正确示例</strong> ✅： “由 <span class="math inline">f(x)=x^2 +1</span> 定义的函数 <span class="math inline">f</span> 是一个偶函数。” “一个可数族可测集的并集是可测的。”</p></li>
+<li><p><strong>正确示例</strong> ✅： 恰当命名概念和定理，比如 commutator（交换子）、 the closed graph theorem（闭图定理）；而不是 the Cauchy-Buniakowski-Schwarz theorem（柯西-布尼亚科夫斯基-施瓦茨定理），L-矩阵，CW复形，CCR群。</p></li>
 </ul></li>
 <li><p><strong>条款14：克制地、有意义地使用“我们(we)”。 </strong></p>
 <ul>
@@ -330,6 +333,8 @@ window.Quarto = {
 <li><p><strong>说明</strong>： 能用文字说清楚的，就不要引入符号。 不要使用只出现一次，没有实际贡献的“一次性”字母。</p></li>
 <li><p><strong>错误示例</strong> ❌： “在紧空间上，每个实值连续函数 <span class="math inline">f</span> 都是有界的。” (这里的 <span class="math inline">f</span> 是不必要的，它没有在别处被引用)。</p></li>
 <li><p><strong>正确示例</strong> ✅： “在紧空间上，所有实值连续函数都是有界的。”</p></li>
+<li><p><strong>错误示例</strong> ❌： 一个关于 <span class="math inline">n×n</span> 矩阵的陈述，以展示许多 <span class="math inline">a_{ij}</span> 来证明，并伴随着排成行、列和对角线的三点省略号。</p></li>
+<li><p><strong>正确示例</strong> ✅： 一个关于 <span class="math inline">n×n</span> 矩阵的陈述，以典型的 3×3 特例来展示证明。</p></li>
 </ul></li>
 <li><p><strong>条款16：永远不要用符号开始一个句子。 </strong></p>
 <ul>
